@@ -11,48 +11,87 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
-#include <QtWidgets/QStatusBar>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QToolBar>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
+#include "glwidget.h"
 
 QT_BEGIN_NAMESPACE
 
 class Ui_MainWindow
 {
 public:
-    QMenuBar *menuBar;
-    QToolBar *mainToolBar;
     QWidget *centralWidget;
-    QStatusBar *statusBar;
+    QHBoxLayout *horizontalLayout;
+    QVBoxLayout *verticalLayout_2;
+    QVBoxLayout *verticalLayout;
+    QSpacerItem *verticalSpacer;
+    QPushButton *quitButton;
+    GLWidget *GLwidget;
+    QToolBar *mainToolBar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(400, 300);
-        menuBar = new QMenuBar(MainWindow);
-        menuBar->setObjectName(QStringLiteral("menuBar"));
-        MainWindow->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(MainWindow);
-        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        MainWindow->addToolBar(mainToolBar);
+        MainWindow->resize(444, 277);
+        MainWindow->setBaseSize(QSize(800, 600));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
+        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(centralWidget->sizePolicy().hasHeightForWidth());
+        centralWidget->setSizePolicy(sizePolicy);
+        horizontalLayout = new QHBoxLayout(centralWidget);
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setSpacing(6);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer);
+
+
+        verticalLayout_2->addLayout(verticalLayout);
+
+        quitButton = new QPushButton(centralWidget);
+        quitButton->setObjectName(QStringLiteral("quitButton"));
+
+        verticalLayout_2->addWidget(quitButton);
+
+
+        horizontalLayout->addLayout(verticalLayout_2);
+
+        GLwidget = new GLWidget(centralWidget);
+        GLwidget->setObjectName(QStringLiteral("GLwidget"));
+
+        horizontalLayout->addWidget(GLwidget);
+
         MainWindow->setCentralWidget(centralWidget);
-        statusBar = new QStatusBar(MainWindow);
-        statusBar->setObjectName(QStringLiteral("statusBar"));
-        MainWindow->setStatusBar(statusBar);
+        mainToolBar = new QToolBar(MainWindow);
+        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
+        MainWindow->addToolBar(Qt::TopToolBarArea, mainToolBar);
 
         retranslateUi(MainWindow);
+        QObject::connect(quitButton, SIGNAL(released()), MainWindow, SLOT(close()));
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Terrain Generator", nullptr));
+        quitButton->setText(QApplication::translate("MainWindow", "Quit", nullptr));
     } // retranslateUi
 
 };
