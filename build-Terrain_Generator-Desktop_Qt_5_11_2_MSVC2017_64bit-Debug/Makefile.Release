@@ -17,7 +17,7 @@ CXXFLAGS      = -nologo -Zc:wchar_t -FS -Zc:rvalueCast -Zc:inline -Zc:strictStri
 INCPATH       = -I..\Terrain_Generator -I. -IC:\Qt\5.11.2\msvc2017_64\include -IC:\Qt\5.11.2\msvc2017_64\include\QtOpenGL -IC:\Qt\5.11.2\msvc2017_64\include\QtWidgets -IC:\Qt\5.11.2\msvc2017_64\include\QtGui -IC:\Qt\5.11.2\msvc2017_64\include\QtANGLE -IC:\Qt\5.11.2\msvc2017_64\include\QtCore -Irelease -I. -I\include -IC:\Qt\5.11.2\msvc2017_64\mkspecs\win32-msvc 
 LINKER        = link
 LFLAGS        = /NOLOGO /DYNAMICBASE /NXCOMPAT /INCREMENTAL:NO /SUBSYSTEM:WINDOWS "/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'"
-LIBS          = /LIBPATH:C:\Qt\5.11.2\msvc2017_64\lib C:\Qt\5.11.2\msvc2017_64\lib\qtmain.lib /LIBPATH:C:\openssl\lib /LIBPATH:C:\Utils\my_sql\mysql-5.6.11-winx64\lib /LIBPATH:C:\Utils\postgresql\pgsql\lib shell32.lib C:\Qt\5.11.2\msvc2017_64\lib\Qt5OpenGL.lib C:\Qt\5.11.2\msvc2017_64\lib\Qt5Widgets.lib C:\Qt\5.11.2\msvc2017_64\lib\Qt5Gui.lib C:\Qt\5.11.2\msvc2017_64\lib\Qt5Core.lib 
+LIBS          = /LIBPATH:C:\Qt\5.11.2\msvc2017_64\lib C:\Qt\5.11.2\msvc2017_64\lib\qtmain.lib /LIBPATH:C:\openssl\lib /LIBPATH:C:\Utils\my_sql\mysql-5.6.11-winx64\lib /LIBPATH:C:\Utils\postgresql\pgsql\lib shell32.lib opengl32.lib GLU32.lib C:\Qt\5.11.2\msvc2017_64\lib\Qt5OpenGL.lib C:\Qt\5.11.2\msvc2017_64\lib\Qt5Widgets.lib C:\Qt\5.11.2\msvc2017_64\lib\Qt5Gui.lib C:\Qt\5.11.2\msvc2017_64\lib\Qt5Core.lib 
 QMAKE         = C:\Qt\5.11.2\msvc2017_64\bin\qmake.exe
 IDC           = idc
 IDL           = midl /NOLOGO
@@ -675,8 +675,6 @@ release\main.obj: ..\Terrain_Generator\main.cpp ..\Terrain_Generator\mainwindow.
 		C:\Qt\5.11.2\msvc2017_64\include\QtWidgets\qdesktopwidget.h \
 		C:\Qt\5.11.2\msvc2017_64\include\QtGui\qguiapplication.h \
 		C:\Qt\5.11.2\msvc2017_64\include\QtGui\qinputmethod.h \
-		C:\Qt\5.11.2\msvc2017_64\include\QtCore\QThread \
-		C:\Qt\5.11.2\msvc2017_64\include\QtCore\qthread.h \
 		C:\Qt\5.11.2\msvc2017_64\include\QtWidgets\QOpenGLWidget \
 		C:\Qt\5.11.2\msvc2017_64\include\QtWidgets\qopenglwidget.h \
 		C:\Qt\5.11.2\msvc2017_64\include\QtWidgets\QWidget \
@@ -966,7 +964,24 @@ release\glwidget.obj: ..\Terrain_Generator\glwidget.cpp ..\Terrain_Generator\glw
 		C:\Qt\5.11.2\msvc2017_64\include\QtGui\qopenglcontext.h \
 		C:\Qt\5.11.2\msvc2017_64\include\QtCore\QObject \
 		C:\Qt\5.11.2\msvc2017_64\include\QtCore\QScopedPointer \
-		C:\Qt\5.11.2\msvc2017_64\include\QtGui\qopenglversionfunctions.h
+		C:\Qt\5.11.2\msvc2017_64\include\QtGui\qopenglversionfunctions.h \
+		C:\Qt\5.11.2\msvc2017_64\include\Qt3DExtras\QSphereMesh \
+		C:\Qt\5.11.2\msvc2017_64\include\Qt3DExtras\qspheremesh.h \
+		C:\Qt\5.11.2\msvc2017_64\include\Qt3DExtras\qt3dextras_global.h \
+		C:\Qt\5.11.2\msvc2017_64\include\Qt3DCore\qt3dcore_global.h \
+		C:\Qt\5.11.2\msvc2017_64\include\Qt3DCore\qt3dcore-config.h \
+		C:\Qt\5.11.2\msvc2017_64\include\Qt3DRender\qgeometryrenderer.h \
+		C:\Qt\5.11.2\msvc2017_64\include\Qt3DCore\qcomponent.h \
+		C:\Qt\5.11.2\msvc2017_64\include\Qt3DCore\qnode.h \
+		C:\Qt\5.11.2\msvc2017_64\include\Qt3DCore\qnodecreatedchange.h \
+		C:\Qt\5.11.2\msvc2017_64\include\Qt3DCore\qscenechange.h \
+		C:\Qt\5.11.2\msvc2017_64\include\Qt3DCore\qnodeid.h \
+		C:\Qt\5.11.2\msvc2017_64\include\QtCore\QDebug \
+		C:\Qt\5.11.2\msvc2017_64\include\QtCore\QHashFunctions \
+		C:\Qt\5.11.2\msvc2017_64\include\QtCore\QSharedPointer \
+		C:\Qt\5.11.2\msvc2017_64\include\Qt3DCore\qnodecommand.h \
+		C:\Qt\5.11.2\msvc2017_64\include\Qt3DRender\qgeometry.h \
+		C:\Qt\5.11.2\msvc2017_64\include\Qt3DRender\qt3drender_global.h
 
 release\moc_mainwindow.obj: release\moc_mainwindow.cpp 
 

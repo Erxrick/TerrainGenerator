@@ -37,7 +37,7 @@ FORMS += \
         mainwindow.ui
 
 
-LIBS += opengl32.lib
+LIBS += opengl32.lib -lGLU32
 
 
 # Default rules for deployment.
