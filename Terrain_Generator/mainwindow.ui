@@ -32,6 +32,13 @@
       <item>
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
+         <widget class="QPushButton" name="pushButton">
+          <property name="text">
+           <string>PushButton</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <spacer name="verticalSpacer">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
@@ -76,6 +83,9 @@
    <extends>QWidget</extends>
    <header>glwidget.h</header>
    <container>1</container>
+   <slots>
+    <slot>createNewCube()</slot>
+   </slots>
   </customwidget>
  </customwidgets>
  <resources/>
@@ -96,5 +106,24 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>released()</signal>
+   <receiver>GLwidget</receiver>
+   <slot>createNewCube()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>150</x>
+     <y>36</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>270</x>
+     <y>102</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
+ <slots>
+  <signal>createCube()</signal>
+ </slots>
 </ui>

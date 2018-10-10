@@ -5,10 +5,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 {
     ui->setupUi(this);
 
-    ui->GLwidget->initializeGL();
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+

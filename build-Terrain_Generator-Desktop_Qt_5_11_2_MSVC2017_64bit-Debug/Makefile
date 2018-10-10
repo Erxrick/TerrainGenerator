@@ -266,7 +266,14 @@ Makefile: ..\Terrain_Generator\Terrain_Generator.pro C:\Qt\5.11.2\msvc2017_64\mk
 		C:\Qt\5.11.2\msvc2017_64\lib\qtmaind.prl \
 		C:\Qt\5.11.2\msvc2017_64\lib\Qt5OpenGL.prl \
 		C:\Qt\5.11.2\msvc2017_64\lib\Qt5Widgets.prl \
+		C:\Qt\5.11.2\msvc2017_64\lib\Qt53DExtras.prl \
+		C:\Qt\5.11.2\msvc2017_64\lib\Qt53DRender.prl \
+		C:\Qt\5.11.2\msvc2017_64\lib\Qt53DInput.prl \
+		C:\Qt\5.11.2\msvc2017_64\lib\Qt53DLogic.prl \
+		C:\Qt\5.11.2\msvc2017_64\lib\Qt53DCore.prl \
+		C:\Qt\5.11.2\msvc2017_64\lib\Qt5Gamepad.prl \
 		C:\Qt\5.11.2\msvc2017_64\lib\Qt5Gui.prl \
+		C:\Qt\5.11.2\msvc2017_64\lib\Qt5Network.prl \
 		C:\Qt\5.11.2\msvc2017_64\lib\Qt5Core.prl
 	$(QMAKE) -o Makefile ..\Terrain_Generator\Terrain_Generator.pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug"
 C:\Qt\5.11.2\msvc2017_64\mkspecs\features\spec_pre.prf:
@@ -460,7 +467,14 @@ C:\Qt\5.11.2\msvc2017_64\mkspecs\features\lex.prf:
 C:\Qt\5.11.2\msvc2017_64\lib\qtmaind.prl:
 C:\Qt\5.11.2\msvc2017_64\lib\Qt5OpenGL.prl:
 C:\Qt\5.11.2\msvc2017_64\lib\Qt5Widgets.prl:
+C:\Qt\5.11.2\msvc2017_64\lib\Qt53DExtras.prl:
+C:\Qt\5.11.2\msvc2017_64\lib\Qt53DRender.prl:
+C:\Qt\5.11.2\msvc2017_64\lib\Qt53DInput.prl:
+C:\Qt\5.11.2\msvc2017_64\lib\Qt53DLogic.prl:
+C:\Qt\5.11.2\msvc2017_64\lib\Qt53DCore.prl:
+C:\Qt\5.11.2\msvc2017_64\lib\Qt5Gamepad.prl:
 C:\Qt\5.11.2\msvc2017_64\lib\Qt5Gui.prl:
+C:\Qt\5.11.2\msvc2017_64\lib\Qt5Network.prl:
 C:\Qt\5.11.2\msvc2017_64\lib\Qt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\Terrain_Generator\Terrain_Generator.pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug"

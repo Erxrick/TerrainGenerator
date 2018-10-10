@@ -29,6 +29,7 @@ public:
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout_2;
     QVBoxLayout *verticalLayout;
+    QPushButton *pushButton;
     QSpacerItem *verticalSpacer;
     QPushButton *quitButton;
     GLWidget *GLwidget;
@@ -57,6 +58,11 @@ public:
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        pushButton = new QPushButton(centralWidget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+
+        verticalLayout->addWidget(pushButton);
+
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout->addItem(verticalSpacer);
@@ -84,6 +90,7 @@ public:
 
         retranslateUi(MainWindow);
         QObject::connect(quitButton, SIGNAL(released()), MainWindow, SLOT(close()));
+        QObject::connect(pushButton, SIGNAL(released()), GLwidget, SLOT(createNewCube()));
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
@@ -91,6 +98,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Terrain Generator", nullptr));
+        pushButton->setText(QApplication::translate("MainWindow", "PushButton", nullptr));
         quitButton->setText(QApplication::translate("MainWindow", "Quit", nullptr));
     } // retranslateUi
 
