@@ -30,16 +30,27 @@ SOURCES += \
     glwidget.cpp \
     glwidget.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    window_primary.cpp \
+    mainmenupage.cpp \
+    selectionpage.cpp \
+    confirmationpage.cpp \
+    completionpage.cpp
 
 HEADERS += \
         mainwindow.h \
     glwidget.h \
     glwidget.h \
-    mainwindow.h
+    mainwindow.h \
+    window_primary.h \
+    mainmenupage.h \
+    selectionpage.h \
+    confirmationpage.h \
+    completionpage.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    window_primary.ui
 
 
 LIBS += opengl32.lib -lGLU32

@@ -10,21 +10,17 @@
 
 #include "glwidget.h"
 #include <QOpenGLShaderProgram>
-//#include <QOpenGLTexture>
 #include <QMouseEvent>
 
 
 GLWidget::GLWidget(QWidget *parent) : QOpenGLWidget(parent), clearColor(Qt::green), xRot(0), yRot(0), zRot(0), program(nullptr)
 {
- //   memset(textures, 0, sizeof(textures));
 }
 
 GLWidget::~GLWidget()
 {
     makeCurrent();
     vbo.destroy();
-   // for (int i = 0; i < 6; ++i)
-  //        delete textures[i];
     delete program;
     doneCurrent();
 }
@@ -100,63 +96,6 @@ void GLWidget::initializeGL()
        program->setUniformValue("texture", 0);
 
 
-//    glClearColor(0, 1, 0, 1);
-//    glEnable(GL_DEPTH_TEST);
-//    //glEnable(GL_COLOR_MATERIAL);
-//    glEnable(GL_CULL_FACE);
-//    glShadeModel(GL_SMOOTH);
-//    glEnable(GL_LIGHTING);
-//    glEnable(GL_LIGHT0);
-//    glEnable(GL_MULTISAMPLE);
-//    static GLfloat lightPosition[4] = { 0.5, 5.0, 7.0, 1.0 };
-//    glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
-
-
-
-
-//    entity = new Qt3DCore::QEntity();
-
-//    material = new Qt3DExtras::QPhongMaterial();
-//    material->setDiffuse(QColor(254, 254, 254));
-
-//    mesh = new Qt3DRender::QMesh();
-
-//    mesh->setMeshName("pumpkin");
-
-//    QUrl data = QUrl::fromLocalFile(QStringLiteral("bunny.obj"));
-//    //data.setScheme("file");
-//    //data.setPath("bunny.obj");
-
-//    qDebug() << data.isValid() << data.toLocalFile() << QFileInfo(data.toLocalFile()).exists() << data.fileName();
-
-//    mesh->setSource(data);
-
-//    qDebug() << mesh->source().isEmpty() << " = is the source empty.";
-
-//    Qt3DRender::QGeometryFactory *geometry_factory = mesh->geometryFactory().data(); // << mesh->geometryFactory().data() returns null pointer
-//     if (!geometry_factory) {
-//     throw std::runtime_error("Could not construct geometry from mesh: " +
-//     mesh->source().toString().toStdString());
-//     }
-//     Qt3DRender::QGeometry *geometry = geometry_factory->operator()();
-
-//     mesh->setGeometry(geometry);
-
-
-
-
-
-
-  //  entity->addComponent(mesh);
-  //  entity->addComponent(material);
-
-
-
-//    qDebug() << mesh->meshName();
-//    qDebug() << mesh->geometry();
-
-//    buffer->setData(Qt3DRender::QMesh)
-
 
 }
 
@@ -180,7 +119,6 @@ void GLWidget::paintGL()
     program->setAttributeBuffer(PROGRAM_TEXCOORD_ATTRIBUTE, GL_FLOAT, 3 * sizeof(GLfloat), 2, 5 * sizeof(GLfloat));
 
     for (int i = 0; i < 6; ++i) {
- //         textures[i]->bind();
           glDrawArrays(GL_TRIANGLE_FAN, i * 4, 4);
       }
 

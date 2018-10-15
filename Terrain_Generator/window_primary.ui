@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Window_Primary</class>
+ <widget class="QMainWindow" name="Window_Primary">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>800</width>
+      <height>600</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>120</width>
+      <height>0</height>
+     </size>
+    </property>
+    <widget class="MainMenuPage" name="page1"/>
+    <widget class="SelectionPage" name="page2"/>
+    <widget class="ConfirmationPage" name="page3"/>
+    <widget class="CompletionPage" name="page4"/>
+   </widget>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MainMenuPage</class>
+   <extends>QWidget</extends>
+   <header>mainmenupage.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>SelectionPage</class>
+   <extends>QWidget</extends>
+   <header>selectionpage.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ConfirmationPage</class>
+   <extends>QWidget</extends>
+   <header>confirmationpage.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>CompletionPage</class>
+   <extends>QWidget</extends>
+   <header>completionpage.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
