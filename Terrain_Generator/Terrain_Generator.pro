@@ -35,7 +35,8 @@ SOURCES += \
     mainmenupage.cpp \
     selectionpage.cpp \
     confirmationpage.cpp \
-    completionpage.cpp
+    completionpage.cpp \
+    mystoragebox.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -46,7 +47,8 @@ HEADERS += \
     mainmenupage.h \
     selectionpage.h \
     confirmationpage.h \
-    completionpage.h
+    completionpage.h \
+    mystoragebox.h
 
 FORMS += \
         mainwindow.ui \
