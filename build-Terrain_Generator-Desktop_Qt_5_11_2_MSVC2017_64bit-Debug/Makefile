@@ -104,6 +104,8 @@ Makefile: ..\Terrain_Generator\Terrain_Generator.pro C:\Qt\5.11.2\msvc2017_64\mk
 		C:\Qt\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri \
 		C:\Qt\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3drender.pri \
 		C:\Qt\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3drender_private.pri \
+		C:\Qt\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dstudioruntime2.pri \
+		C:\Qt\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dstudioruntime2_private.pri \
 		C:\Qt\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_accessibility_support_private.pri \
 		C:\Qt\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_axbase.pri \
 		C:\Qt\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_axbase_private.pri \
@@ -303,6 +305,8 @@ C:\Qt\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dquickscene2d.pri:
 C:\Qt\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri:
 C:\Qt\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3drender.pri:
 C:\Qt\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3drender_private.pri:
+C:\Qt\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dstudioruntime2.pri:
+C:\Qt\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_3dstudioruntime2_private.pri:
 C:\Qt\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_accessibility_support_private.pri:
 C:\Qt\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_axbase.pri:
 C:\Qt\5.11.2\msvc2017_64\mkspecs\modules\qt_lib_axbase_private.pri:

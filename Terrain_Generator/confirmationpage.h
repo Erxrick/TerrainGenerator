@@ -3,6 +3,8 @@
 
 #include <QWidget>
 
+
+
 class ConfirmationPage : public QWidget
 {
     Q_OBJECT

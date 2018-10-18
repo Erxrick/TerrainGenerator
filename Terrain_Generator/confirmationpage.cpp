@@ -3,4 +3,6 @@
 ConfirmationPage::ConfirmationPage(QWidget *parent) : QWidget(parent)
 {
 
+
+
 }

@@ -15,6 +15,15 @@ public:
     explicit Window_Primary(QWidget *parent = nullptr);
     ~Window_Primary();
 
+private slots:
+    void on_btnConfirm_clicked();
+
+    void on_btnContinue_clicked();
+
+    void on_btnBack_clicked();
+
+    void on_btnImageLoad_clicked();
+
 private:
     Ui::Window_Primary *ui;
 };

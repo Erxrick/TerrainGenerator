@@ -27,7 +27,7 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="sizePolicy">
-    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
      <horstretch>0</horstretch>
      <verstretch>0</verstretch>
     </sizepolicy>
@@ -60,7 +60,7 @@
        <bool>true</bool>
       </property>
       <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
@@ -86,6 +86,12 @@
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>800</width>
+         <height>600</height>
+        </size>
        </property>
        <layout class="QGridLayout" name="gridLayout_4">
         <property name="leftMargin">
@@ -461,6 +467,12 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="minimumSize">
+        <size>
+         <width>800</width>
+         <height>600</height>
+        </size>
+       </property>
        <layout class="QGridLayout" name="gridLayout_7">
         <item row="0" column="0">
          <widget class="MyStorageBox" name="groupBox_7">
@@ -678,9 +690,9 @@
                     <property name="geometry">
                      <rect>
                       <x>0</x>
-                      <y>-222</y>
-                      <width>367</width>
-                      <height>290</height>
+                      <y>0</y>
+                      <width>372</width>
+                      <height>284</height>
                      </rect>
                     </property>
                     <layout class="QFormLayout" name="formLayout">
@@ -800,7 +812,7 @@
                         </font>
                        </property>
                        <property name="text">
-                        <string>   </string>
+                        <string/>
                        </property>
                       </widget>
                      </item>
@@ -1099,8 +1111,6 @@
   <tabstop>btnContinue</tabstop>
   <tabstop>btnAutoDetect</tabstop>
   <tabstop>scrollArea</tabstop>
-  <tabstop>btnImageLoad_2</tabstop>
-  <tabstop>btnContinue_2</tabstop>
   <tabstop>inputMeshName</tabstop>
   <tabstop>inputOutputDirectory</tabstop>
   <tabstop>toolBtnOutputDirectory</tabstop>
