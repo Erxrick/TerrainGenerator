@@ -9,6 +9,8 @@ class SelectionPage : public QWidget
 public:
     explicit SelectionPage(QWidget *parent = nullptr);
 
+    QWidget* OriginalImagePage;
+    QWidget* CurrentImagePage;
 signals:
 
 public slots:

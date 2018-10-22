@@ -24,9 +24,12 @@
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QStackedWidget>
+#include <QtWidgets/QTabWidget>
 #include <QtWidgets/QToolButton>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
+#include "completionpage.h"
+#include "confirmationpage.h"
 #include "mainmenupage.h"
 #include "mystoragebox.h"
 #include "selectionpage.h"
@@ -65,7 +68,7 @@ public:
     QFrame *line;
     MyStorageBox *groupBox_5;
     QVBoxLayout *verticalLayout_2;
-    QWidget *widget;
+    QWidget *OriginalImageP1;
     SelectionPage *page2;
     QGridLayout *gridLayout_7;
     MyStorageBox *groupBox_7;
@@ -82,6 +85,7 @@ public:
     QPushButton *btnAutoDetect;
     QSpacerItem *horizontalSpacer_8;
     QFrame *line_2;
+    QSpacerItem *verticalSpacer_4;
     MyStorageBox *groupBox_13;
     QGridLayout *gridLayout1;
     QLabel *label_14;
@@ -115,8 +119,11 @@ public:
     QPushButton *btnConfirm;
     MyStorageBox *groupBox_12;
     QVBoxLayout *verticalLayout_7;
-    QWidget *widget_2;
-    QWidget *page3;
+    QTabWidget *tabWidget_2;
+    QWidget *OriginalImage;
+    QWidget *CurrentSelectionPage;
+    ConfirmationPage *page3;
+    CompletionPage *page4;
 
     void setupUi(QMainWindow *Window_Primary)
     {
@@ -283,16 +290,16 @@ public:
         verticalLayout_2->setSpacing(9);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        widget = new QWidget(groupBox_5);
-        widget->setObjectName(QStringLiteral("widget"));
+        OriginalImageP1 = new QWidget(groupBox_5);
+        OriginalImageP1->setObjectName(QStringLiteral("OriginalImageP1"));
         QSizePolicy sizePolicy2(QSizePolicy::Minimum, QSizePolicy::Minimum);
         sizePolicy2.setHorizontalStretch(0);
         sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(widget->sizePolicy().hasHeightForWidth());
-        widget->setSizePolicy(sizePolicy2);
-        widget->setAutoFillBackground(false);
+        sizePolicy2.setHeightForWidth(OriginalImageP1->sizePolicy().hasHeightForWidth());
+        OriginalImageP1->setSizePolicy(sizePolicy2);
+        OriginalImageP1->setAutoFillBackground(true);
 
-        verticalLayout_2->addWidget(widget);
+        verticalLayout_2->addWidget(OriginalImageP1);
 
 
         gridLayout_3->addWidget(groupBox_5, 0, 1, 1, 1);
@@ -378,6 +385,10 @@ public:
 
         verticalLayout_5->addWidget(line_2);
 
+        verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_5->addItem(verticalSpacer_4);
+
         groupBox_13 = new MyStorageBox(groupBox_8);
         groupBox_13->setObjectName(QStringLiteral("groupBox_13"));
         gridLayout1 = new QGridLayout(groupBox_13);
@@ -397,12 +408,15 @@ public:
 
         scrollArea = new QScrollArea(groupBox_13);
         scrollArea->setObjectName(QStringLiteral("scrollArea"));
-        sizePolicy2.setHeightForWidth(scrollArea->sizePolicy().hasHeightForWidth());
-        scrollArea->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy5(QSizePolicy::Minimum, QSizePolicy::MinimumExpanding);
+        sizePolicy5.setHorizontalStretch(0);
+        sizePolicy5.setVerticalStretch(0);
+        sizePolicy5.setHeightForWidth(scrollArea->sizePolicy().hasHeightForWidth());
+        scrollArea->setSizePolicy(sizePolicy5);
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 372, 284));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 367, 284));
         formLayout = new QFormLayout(scrollAreaWidgetContents);
         formLayout->setObjectName(QStringLiteral("formLayout"));
         label_4 = new QLabel(scrollAreaWidgetContents);
@@ -506,11 +520,11 @@ public:
 
         inputQuality = new MyStorageBox(scrollAreaWidgetContents);
         inputQuality->setObjectName(QStringLiteral("inputQuality"));
-        QSizePolicy sizePolicy5(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy5.setHorizontalStretch(0);
-        sizePolicy5.setVerticalStretch(0);
-        sizePolicy5.setHeightForWidth(inputQuality->sizePolicy().hasHeightForWidth());
-        inputQuality->setSizePolicy(sizePolicy5);
+        QSizePolicy sizePolicy6(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy6.setHorizontalStretch(0);
+        sizePolicy6.setVerticalStretch(0);
+        sizePolicy6.setHeightForWidth(inputQuality->sizePolicy().hasHeightForWidth());
+        inputQuality->setSizePolicy(sizePolicy6);
         inputQuality->setFont(font2);
         inputQuality->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
         inputQuality->setFlat(false);
@@ -583,12 +597,26 @@ public:
         verticalLayout_7->setSpacing(9);
         verticalLayout_7->setObjectName(QStringLiteral("verticalLayout_7"));
         verticalLayout_7->setContentsMargins(0, 0, 0, 0);
-        widget_2 = new QWidget(groupBox_12);
-        widget_2->setObjectName(QStringLiteral("widget_2"));
-        sizePolicy2.setHeightForWidth(widget_2->sizePolicy().hasHeightForWidth());
-        widget_2->setSizePolicy(sizePolicy2);
+        tabWidget_2 = new QTabWidget(groupBox_12);
+        tabWidget_2->setObjectName(QStringLiteral("tabWidget_2"));
+        sizePolicy2.setHeightForWidth(tabWidget_2->sizePolicy().hasHeightForWidth());
+        tabWidget_2->setSizePolicy(sizePolicy2);
+        tabWidget_2->setTabPosition(QTabWidget::North);
+        tabWidget_2->setTabShape(QTabWidget::Rounded);
+        tabWidget_2->setIconSize(QSize(16, 16));
+        tabWidget_2->setUsesScrollButtons(true);
+        tabWidget_2->setDocumentMode(false);
+        tabWidget_2->setTabsClosable(false);
+        tabWidget_2->setMovable(false);
+        tabWidget_2->setTabBarAutoHide(false);
+        OriginalImage = new QWidget();
+        OriginalImage->setObjectName(QStringLiteral("OriginalImage"));
+        tabWidget_2->addTab(OriginalImage, QString());
+        CurrentSelectionPage = new QWidget();
+        CurrentSelectionPage->setObjectName(QStringLiteral("CurrentSelectionPage"));
+        tabWidget_2->addTab(CurrentSelectionPage, QString());
 
-        verticalLayout_7->addWidget(widget_2);
+        verticalLayout_7->addWidget(tabWidget_2);
 
 
         gridLayout_5->addWidget(groupBox_12, 0, 1, 1, 1);
@@ -597,11 +625,14 @@ public:
         gridLayout_7->addWidget(groupBox_7, 0, 0, 1, 1);
 
         stackedWidget->addWidget(page2);
-        page3 = new QWidget();
+        page3 = new ConfirmationPage();
         page3->setObjectName(QStringLiteral("page3"));
         sizePolicy1.setHeightForWidth(page3->sizePolicy().hasHeightForWidth());
         page3->setSizePolicy(sizePolicy1);
         stackedWidget->addWidget(page3);
+        page4 = new CompletionPage();
+        page4->setObjectName(QStringLiteral("page4"));
+        stackedWidget->addWidget(page4);
 
         gridLayout_2->addWidget(stackedWidget, 0, 0, 1, 1);
 
@@ -634,6 +665,7 @@ public:
         retranslateUi(Window_Primary);
 
         stackedWidget->setCurrentIndex(1);
+        tabWidget_2->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(Window_Primary);
@@ -678,6 +710,8 @@ public:
         btnBack->setText(QApplication::translate("Window_Primary", "Back", nullptr));
         btnConfirm->setText(QApplication::translate("Window_Primary", "Confirm", nullptr));
         groupBox_12->setTitle(QString());
+        tabWidget_2->setTabText(tabWidget_2->indexOf(OriginalImage), QApplication::translate("Window_Primary", "Original", nullptr));
+        tabWidget_2->setTabText(tabWidget_2->indexOf(CurrentSelectionPage), QApplication::translate("Window_Primary", "Current", nullptr));
     } // retranslateUi
 
 };

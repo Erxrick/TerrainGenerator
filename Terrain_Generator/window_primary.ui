@@ -440,7 +440,7 @@
                <number>0</number>
               </property>
               <item>
-               <widget class="QWidget" name="widget" native="true">
+               <widget class="QWidget" name="OriginalImageP1" native="true">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
                   <horstretch>0</horstretch>
@@ -448,7 +448,7 @@
                  </sizepolicy>
                 </property>
                 <property name="autoFillBackground">
-                 <bool>false</bool>
+                 <bool>true</bool>
                 </property>
                </widget>
               </item>
@@ -639,6 +639,19 @@
                </widget>
               </item>
               <item>
+               <spacer name="verticalSpacer_4">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
                <widget class="MyStorageBox" name="groupBox_13">
                 <property name="title">
                  <string/>
@@ -678,7 +691,7 @@
                  <item row="2" column="0">
                   <widget class="QScrollArea" name="scrollArea">
                    <property name="sizePolicy">
-                    <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                    <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
                      <horstretch>0</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
@@ -691,7 +704,7 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>372</width>
+                      <width>367</width>
                       <height>284</height>
                      </rect>
                     </property>
@@ -1056,13 +1069,53 @@
                <number>0</number>
               </property>
               <item>
-               <widget class="QWidget" name="widget_2" native="true">
+               <widget class="QTabWidget" name="tabWidget_2">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="tabPosition">
+                 <enum>QTabWidget::North</enum>
+                </property>
+                <property name="tabShape">
+                 <enum>QTabWidget::Rounded</enum>
+                </property>
+                <property name="currentIndex">
+                 <number>0</number>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>16</width>
+                  <height>16</height>
+                 </size>
+                </property>
+                <property name="usesScrollButtons">
+                 <bool>true</bool>
+                </property>
+                <property name="documentMode">
+                 <bool>false</bool>
+                </property>
+                <property name="tabsClosable">
+                 <bool>false</bool>
+                </property>
+                <property name="movable">
+                 <bool>false</bool>
+                </property>
+                <property name="tabBarAutoHide">
+                 <bool>false</bool>
+                </property>
+                <widget class="QWidget" name="OriginalImage">
+                 <attribute name="title">
+                  <string>Original</string>
+                 </attribute>
+                </widget>
+                <widget class="QWidget" name="CurrentSelectionPage">
+                 <attribute name="title">
+                  <string>Current</string>
+                 </attribute>
+                </widget>
                </widget>
               </item>
              </layout>
@@ -1073,7 +1126,7 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="page3">
+      <widget class="ConfirmationPage" name="page3">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
          <horstretch>0</horstretch>
@@ -1081,6 +1134,7 @@
         </sizepolicy>
        </property>
       </widget>
+      <widget class="CompletionPage" name="page4"/>
      </widget>
     </item>
    </layout>
@@ -1103,6 +1157,18 @@
    <class>MyStorageBox</class>
    <extends>QGroupBox</extends>
    <header>mystoragebox.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ConfirmationPage</class>
+   <extends>QWidget</extends>
+   <header>confirmationpage.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>CompletionPage</class>
+   <extends>QWidget</extends>
+   <header>completionpage.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
