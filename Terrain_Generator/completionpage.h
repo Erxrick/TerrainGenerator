@@ -3,11 +3,15 @@
 
 #include <QWidget>
 
+class GLWidget;
+
 class CompletionPage : public QWidget
 {
     Q_OBJECT
 public:
     explicit CompletionPage(QWidget *parent = nullptr);
+
+    GLWidget* glWidget;
 
 signals:
 

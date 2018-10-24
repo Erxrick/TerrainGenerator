@@ -11,6 +11,8 @@ class ConfirmationPage : public QWidget
 public:
     explicit ConfirmationPage(QWidget *parent = nullptr);
 
+    QWidget* OriginalImagePage;
+    QWidget* CurrentImagePage;
 signals:
 
 public slots:

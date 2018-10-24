@@ -17,6 +17,7 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QListView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
@@ -30,6 +31,7 @@
 #include <QtWidgets/QWidget>
 #include "completionpage.h"
 #include "confirmationpage.h"
+#include "glwidget.h"
 #include "mainmenupage.h"
 #include "mystoragebox.h"
 #include "selectionpage.h"
@@ -40,7 +42,7 @@ class Ui_Window_Primary
 {
 public:
     QWidget *centralwidget;
-    QGridLayout *gridLayout_2;
+    QGridLayout *gridLayout_12;
     QStackedWidget *stackedWidget;
     MainMenuPage *page1;
     QGridLayout *gridLayout_4;
@@ -120,10 +122,66 @@ public:
     MyStorageBox *groupBox_12;
     QVBoxLayout *verticalLayout_7;
     QTabWidget *tabWidget_2;
-    QWidget *OriginalImage;
+    QWidget *OriginalImageSelection;
     QWidget *CurrentSelectionPage;
     ConfirmationPage *page3;
+    QGridLayout *gridLayout_9;
+    MyStorageBox *groupBox_14;
+    QGridLayout *gridLayout_2;
+    MyStorageBox *groupBox_15;
+    QVBoxLayout *verticalLayout_8;
+    MyStorageBox *groupBox_16;
+    QVBoxLayout *verticalLayout_9;
+    QLabel *label_16;
+    QLabel *label_17;
+    QListView *contourLineList;
+    QFrame *line_3;
+    QSpacerItem *verticalSpacer_6;
+    MyStorageBox *groupBox_18;
+    QGridLayout *_2;
+    QLabel *label_18;
+    QScrollArea *scrollArea_2;
+    QWidget *scrollAreaWidgetContents_2;
+    QFormLayout *formLayout_2;
+    QLabel *label_19;
+    QLabel *label_20;
+    QLabel *label_21;
+    QLabel *label_22;
+    QLabel *label_23;
+    QLabel *label_24;
+    QLabel *label_25;
+    QLabel *label_26;
+    QLineEdit *inputMeshNameConfirmation;
+    QLineEdit *inputOutputDirectoryConfirmation;
+    QSpinBox *inputMaxWidthConfirmation;
+    QSpinBox *inputMaxHeightConfirmation;
+    QSpinBox *inputMaxVerticesConfirmation;
+    QSpinBox *inputMaxDepthConfirmation;
+    MyStorageBox *inputQuality_2;
+    QGridLayout *gridLayout_10;
+    QRadioButton *radioButton_4;
+    QRadioButton *radioButton_5;
+    QRadioButton *radioButton_6;
+    QLabel *label_27;
+    MyStorageBox *groupBox_19;
+    QGridLayout *gridLayout_11;
+    QPushButton *btnBackToSelection;
+    QPushButton *btnConfirmOnConfirmation;
+    MyStorageBox *groupBox_20;
+    QVBoxLayout *verticalLayout_10;
+    QTabWidget *tabWidget_3;
+    QWidget *OriginalImageConfirmation;
+    QWidget *CurrentConfirmationPanel;
     CompletionPage *page4;
+    QGridLayout *gridLayout_16;
+    MyStorageBox *groupBox_17;
+    QGridLayout *gridLayout_13;
+    MyStorageBox *groupBox_21;
+    QGridLayout *gridLayout_14;
+    QPushButton *btnBackToConfirmation;
+    QPushButton *btnRestart;
+    QPushButton *btnFinish;
+    GLWidget *openGlWidget;
 
     void setupUi(QMainWindow *Window_Primary)
     {
@@ -141,10 +199,9 @@ public:
         sizePolicy.setHeightForWidth(centralwidget->sizePolicy().hasHeightForWidth());
         centralwidget->setSizePolicy(sizePolicy);
         centralwidget->setMinimumSize(QSize(800, 600));
-        gridLayout_2 = new QGridLayout(centralwidget);
-        gridLayout_2->setSpacing(0);
-        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
-        gridLayout_2->setContentsMargins(0, 0, 0, 0);
+        gridLayout_12 = new QGridLayout(centralwidget);
+        gridLayout_12->setObjectName(QStringLiteral("gridLayout_12"));
+        gridLayout_12->setContentsMargins(0, 0, 0, 0);
         stackedWidget = new QStackedWidget(centralwidget);
         stackedWidget->setObjectName(QStringLiteral("stackedWidget"));
         stackedWidget->setEnabled(true);
@@ -228,7 +285,9 @@ public:
 
         btnImageLoad = new QPushButton(groupBox_4);
         btnImageLoad->setObjectName(QStringLiteral("btnImageLoad"));
-        btnImageLoad->setFont(font1);
+        QFont font2;
+        font2.setPointSize(10);
+        btnImageLoad->setFont(font2);
 
         horizontalLayout_2->addWidget(btnImageLoad);
 
@@ -238,7 +297,7 @@ public:
 
         btnContinue = new QPushButton(groupBox_4);
         btnContinue->setObjectName(QStringLiteral("btnContinue"));
-        btnContinue->setFont(font1);
+        btnContinue->setFont(font2);
 
         horizontalLayout_2->addWidget(btnContinue);
 
@@ -416,13 +475,11 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 367, 284));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 372, 284));
         formLayout = new QFormLayout(scrollAreaWidgetContents);
         formLayout->setObjectName(QStringLiteral("formLayout"));
         label_4 = new QLabel(scrollAreaWidgetContents);
         label_4->setObjectName(QStringLiteral("label_4"));
-        QFont font2;
-        font2.setPointSize(10);
         label_4->setFont(font2);
         label_4->setFocusPolicy(Qt::ClickFocus);
 
@@ -576,11 +633,13 @@ public:
         gridLayout_6->setContentsMargins(10, 10, 10, 10);
         btnBack = new QPushButton(groupBox_11);
         btnBack->setObjectName(QStringLiteral("btnBack"));
+        btnBack->setFont(font2);
 
         gridLayout_6->addWidget(btnBack, 0, 0, 1, 1);
 
         btnConfirm = new QPushButton(groupBox_11);
         btnConfirm->setObjectName(QStringLiteral("btnConfirm"));
+        btnConfirm->setFont(font2);
 
         gridLayout_6->addWidget(btnConfirm, 0, 1, 1, 1);
 
@@ -609,9 +668,9 @@ public:
         tabWidget_2->setTabsClosable(false);
         tabWidget_2->setMovable(false);
         tabWidget_2->setTabBarAutoHide(false);
-        OriginalImage = new QWidget();
-        OriginalImage->setObjectName(QStringLiteral("OriginalImage"));
-        tabWidget_2->addTab(OriginalImage, QString());
+        OriginalImageSelection = new QWidget();
+        OriginalImageSelection->setObjectName(QStringLiteral("OriginalImageSelection"));
+        tabWidget_2->addTab(OriginalImageSelection, QString());
         CurrentSelectionPage = new QWidget();
         CurrentSelectionPage->setObjectName(QStringLiteral("CurrentSelectionPage"));
         tabWidget_2->addTab(CurrentSelectionPage, QString());
@@ -629,12 +688,337 @@ public:
         page3->setObjectName(QStringLiteral("page3"));
         sizePolicy1.setHeightForWidth(page3->sizePolicy().hasHeightForWidth());
         page3->setSizePolicy(sizePolicy1);
+        page3->setMinimumSize(QSize(800, 600));
+        gridLayout_9 = new QGridLayout(page3);
+        gridLayout_9->setObjectName(QStringLiteral("gridLayout_9"));
+        groupBox_14 = new MyStorageBox(page3);
+        groupBox_14->setObjectName(QStringLiteral("groupBox_14"));
+        sizePolicy1.setHeightForWidth(groupBox_14->sizePolicy().hasHeightForWidth());
+        groupBox_14->setSizePolicy(sizePolicy1);
+        groupBox_14->setMinimumSize(QSize(800, 600));
+        gridLayout_2 = new QGridLayout(groupBox_14);
+        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
+        groupBox_15 = new MyStorageBox(groupBox_14);
+        groupBox_15->setObjectName(QStringLiteral("groupBox_15"));
+        verticalLayout_8 = new QVBoxLayout(groupBox_15);
+        verticalLayout_8->setSpacing(9);
+        verticalLayout_8->setObjectName(QStringLiteral("verticalLayout_8"));
+        verticalLayout_8->setContentsMargins(0, 0, 0, 0);
+        groupBox_16 = new MyStorageBox(groupBox_15);
+        groupBox_16->setObjectName(QStringLiteral("groupBox_16"));
+        verticalLayout_9 = new QVBoxLayout(groupBox_16);
+        verticalLayout_9->setSpacing(9);
+        verticalLayout_9->setObjectName(QStringLiteral("verticalLayout_9"));
+        verticalLayout_9->setContentsMargins(0, 0, 0, 0);
+        label_16 = new QLabel(groupBox_16);
+        label_16->setObjectName(QStringLiteral("label_16"));
+        label_16->setAlignment(Qt::AlignCenter);
+        label_16->setWordWrap(true);
+        label_16->setMargin(6);
+
+        verticalLayout_9->addWidget(label_16);
+
+        label_17 = new QLabel(groupBox_16);
+        label_17->setObjectName(QStringLiteral("label_17"));
+
+        verticalLayout_9->addWidget(label_17);
+
+        contourLineList = new QListView(groupBox_16);
+        contourLineList->setObjectName(QStringLiteral("contourLineList"));
+        sizePolicy5.setHeightForWidth(contourLineList->sizePolicy().hasHeightForWidth());
+        contourLineList->setSizePolicy(sizePolicy5);
+
+        verticalLayout_9->addWidget(contourLineList);
+
+
+        verticalLayout_8->addWidget(groupBox_16);
+
+        line_3 = new QFrame(groupBox_15);
+        line_3->setObjectName(QStringLiteral("line_3"));
+        line_3->setFrameShape(QFrame::HLine);
+        line_3->setFrameShadow(QFrame::Sunken);
+
+        verticalLayout_8->addWidget(line_3);
+
+        verticalSpacer_6 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_8->addItem(verticalSpacer_6);
+
+        groupBox_18 = new MyStorageBox(groupBox_15);
+        groupBox_18->setObjectName(QStringLiteral("groupBox_18"));
+        _2 = new QGridLayout(groupBox_18);
+        _2->setSpacing(0);
+        _2->setObjectName(QStringLiteral("_2"));
+        _2->setContentsMargins(0, 0, 0, 0);
+        label_18 = new QLabel(groupBox_18);
+        label_18->setObjectName(QStringLiteral("label_18"));
+        sizePolicy4.setHeightForWidth(label_18->sizePolicy().hasHeightForWidth());
+        label_18->setSizePolicy(sizePolicy4);
+        label_18->setMargin(0);
+
+        _2->addWidget(label_18, 0, 0, 1, 1);
+
+        scrollArea_2 = new QScrollArea(groupBox_18);
+        scrollArea_2->setObjectName(QStringLiteral("scrollArea_2"));
+        sizePolicy5.setHeightForWidth(scrollArea_2->sizePolicy().hasHeightForWidth());
+        scrollArea_2->setSizePolicy(sizePolicy5);
+        scrollArea_2->setWidgetResizable(true);
+        scrollAreaWidgetContents_2 = new QWidget();
+        scrollAreaWidgetContents_2->setObjectName(QStringLiteral("scrollAreaWidgetContents_2"));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 357, 277));
+        formLayout_2 = new QFormLayout(scrollAreaWidgetContents_2);
+        formLayout_2->setObjectName(QStringLiteral("formLayout_2"));
+        label_19 = new QLabel(scrollAreaWidgetContents_2);
+        label_19->setObjectName(QStringLiteral("label_19"));
+        label_19->setFont(font2);
+        label_19->setFocusPolicy(Qt::ClickFocus);
+
+        formLayout_2->setWidget(0, QFormLayout::LabelRole, label_19);
+
+        label_20 = new QLabel(scrollAreaWidgetContents_2);
+        label_20->setObjectName(QStringLiteral("label_20"));
+        label_20->setFont(font2);
+
+        formLayout_2->setWidget(2, QFormLayout::LabelRole, label_20);
+
+        label_21 = new QLabel(scrollAreaWidgetContents_2);
+        label_21->setObjectName(QStringLiteral("label_21"));
+        label_21->setFont(font2);
+
+        formLayout_2->setWidget(4, QFormLayout::LabelRole, label_21);
+
+        label_22 = new QLabel(scrollAreaWidgetContents_2);
+        label_22->setObjectName(QStringLiteral("label_22"));
+        label_22->setFont(font2);
+
+        formLayout_2->setWidget(5, QFormLayout::LabelRole, label_22);
+
+        label_23 = new QLabel(scrollAreaWidgetContents_2);
+        label_23->setObjectName(QStringLiteral("label_23"));
+        label_23->setFont(font2);
+
+        formLayout_2->setWidget(6, QFormLayout::LabelRole, label_23);
+
+        label_24 = new QLabel(scrollAreaWidgetContents_2);
+        label_24->setObjectName(QStringLiteral("label_24"));
+        label_24->setFont(font2);
+
+        formLayout_2->setWidget(7, QFormLayout::LabelRole, label_24);
+
+        label_25 = new QLabel(scrollAreaWidgetContents_2);
+        label_25->setObjectName(QStringLiteral("label_25"));
+        label_25->setFont(font2);
+
+        formLayout_2->setWidget(8, QFormLayout::LabelRole, label_25);
+
+        label_26 = new QLabel(scrollAreaWidgetContents_2);
+        label_26->setObjectName(QStringLiteral("label_26"));
+        label_26->setFont(font2);
+
+        formLayout_2->setWidget(3, QFormLayout::LabelRole, label_26);
+
+        inputMeshNameConfirmation = new QLineEdit(scrollAreaWidgetContents_2);
+        inputMeshNameConfirmation->setObjectName(QStringLiteral("inputMeshNameConfirmation"));
+        inputMeshNameConfirmation->setFont(font2);
+        inputMeshNameConfirmation->setReadOnly(true);
+
+        formLayout_2->setWidget(0, QFormLayout::FieldRole, inputMeshNameConfirmation);
+
+        inputOutputDirectoryConfirmation = new QLineEdit(scrollAreaWidgetContents_2);
+        inputOutputDirectoryConfirmation->setObjectName(QStringLiteral("inputOutputDirectoryConfirmation"));
+        inputOutputDirectoryConfirmation->setFont(font2);
+        inputOutputDirectoryConfirmation->setReadOnly(true);
+
+        formLayout_2->setWidget(2, QFormLayout::FieldRole, inputOutputDirectoryConfirmation);
+
+        inputMaxWidthConfirmation = new QSpinBox(scrollAreaWidgetContents_2);
+        inputMaxWidthConfirmation->setObjectName(QStringLiteral("inputMaxWidthConfirmation"));
+        inputMaxWidthConfirmation->setFont(font2);
+        inputMaxWidthConfirmation->setReadOnly(true);
+        inputMaxWidthConfirmation->setMaximum(5000);
+
+        formLayout_2->setWidget(5, QFormLayout::FieldRole, inputMaxWidthConfirmation);
+
+        inputMaxHeightConfirmation = new QSpinBox(scrollAreaWidgetContents_2);
+        inputMaxHeightConfirmation->setObjectName(QStringLiteral("inputMaxHeightConfirmation"));
+        inputMaxHeightConfirmation->setFont(font2);
+        inputMaxHeightConfirmation->setReadOnly(true);
+        inputMaxHeightConfirmation->setMaximum(5000);
+
+        formLayout_2->setWidget(6, QFormLayout::FieldRole, inputMaxHeightConfirmation);
+
+        inputMaxVerticesConfirmation = new QSpinBox(scrollAreaWidgetContents_2);
+        inputMaxVerticesConfirmation->setObjectName(QStringLiteral("inputMaxVerticesConfirmation"));
+        inputMaxVerticesConfirmation->setFont(font2);
+        inputMaxVerticesConfirmation->setReadOnly(true);
+        inputMaxVerticesConfirmation->setMaximum(5000);
+
+        formLayout_2->setWidget(4, QFormLayout::FieldRole, inputMaxVerticesConfirmation);
+
+        inputMaxDepthConfirmation = new QSpinBox(scrollAreaWidgetContents_2);
+        inputMaxDepthConfirmation->setObjectName(QStringLiteral("inputMaxDepthConfirmation"));
+        inputMaxDepthConfirmation->setFont(font2);
+        inputMaxDepthConfirmation->setReadOnly(true);
+        inputMaxDepthConfirmation->setMaximum(5000);
+
+        formLayout_2->setWidget(7, QFormLayout::FieldRole, inputMaxDepthConfirmation);
+
+        inputQuality_2 = new MyStorageBox(scrollAreaWidgetContents_2);
+        inputQuality_2->setObjectName(QStringLiteral("inputQuality_2"));
+        sizePolicy6.setHeightForWidth(inputQuality_2->sizePolicy().hasHeightForWidth());
+        inputQuality_2->setSizePolicy(sizePolicy6);
+        inputQuality_2->setFont(font2);
+        inputQuality_2->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
+        inputQuality_2->setFlat(false);
+        inputQuality_2->setCheckable(false);
+        gridLayout_10 = new QGridLayout(inputQuality_2);
+        gridLayout_10->setSpacing(0);
+        gridLayout_10->setObjectName(QStringLiteral("gridLayout_10"));
+        gridLayout_10->setContentsMargins(0, 0, 0, 0);
+        radioButton_4 = new QRadioButton(inputQuality_2);
+        radioButton_4->setObjectName(QStringLiteral("radioButton_4"));
+
+        gridLayout_10->addWidget(radioButton_4, 0, 0, 1, 1);
+
+        radioButton_5 = new QRadioButton(inputQuality_2);
+        radioButton_5->setObjectName(QStringLiteral("radioButton_5"));
+
+        gridLayout_10->addWidget(radioButton_5, 0, 1, 1, 1);
+
+        radioButton_6 = new QRadioButton(inputQuality_2);
+        radioButton_6->setObjectName(QStringLiteral("radioButton_6"));
+
+        gridLayout_10->addWidget(radioButton_6, 0, 2, 1, 1);
+
+
+        formLayout_2->setWidget(8, QFormLayout::FieldRole, inputQuality_2);
+
+        scrollArea_2->setWidget(scrollAreaWidgetContents_2);
+
+        _2->addWidget(scrollArea_2, 2, 0, 1, 1);
+
+        label_27 = new QLabel(groupBox_18);
+        label_27->setObjectName(QStringLiteral("label_27"));
+        label_27->setFont(font3);
+
+        _2->addWidget(label_27, 1, 0, 1, 1);
+
+
+        verticalLayout_8->addWidget(groupBox_18);
+
+        groupBox_19 = new MyStorageBox(groupBox_15);
+        groupBox_19->setObjectName(QStringLiteral("groupBox_19"));
+        sizePolicy4.setHeightForWidth(groupBox_19->sizePolicy().hasHeightForWidth());
+        groupBox_19->setSizePolicy(sizePolicy4);
+        gridLayout_11 = new QGridLayout(groupBox_19);
+        gridLayout_11->setSpacing(9);
+        gridLayout_11->setObjectName(QStringLiteral("gridLayout_11"));
+        gridLayout_11->setContentsMargins(10, 10, 10, 10);
+        btnBackToSelection = new QPushButton(groupBox_19);
+        btnBackToSelection->setObjectName(QStringLiteral("btnBackToSelection"));
+        btnBackToSelection->setFont(font2);
+
+        gridLayout_11->addWidget(btnBackToSelection, 0, 0, 1, 1);
+
+        btnConfirmOnConfirmation = new QPushButton(groupBox_19);
+        btnConfirmOnConfirmation->setObjectName(QStringLiteral("btnConfirmOnConfirmation"));
+        btnConfirmOnConfirmation->setFont(font2);
+
+        gridLayout_11->addWidget(btnConfirmOnConfirmation, 0, 1, 1, 1);
+
+
+        verticalLayout_8->addWidget(groupBox_19);
+
+
+        gridLayout_2->addWidget(groupBox_15, 0, 0, 1, 1);
+
+        groupBox_20 = new MyStorageBox(groupBox_14);
+        groupBox_20->setObjectName(QStringLiteral("groupBox_20"));
+        groupBox_20->setFlat(false);
+        verticalLayout_10 = new QVBoxLayout(groupBox_20);
+        verticalLayout_10->setSpacing(9);
+        verticalLayout_10->setObjectName(QStringLiteral("verticalLayout_10"));
+        verticalLayout_10->setContentsMargins(0, 0, 0, 0);
+        tabWidget_3 = new QTabWidget(groupBox_20);
+        tabWidget_3->setObjectName(QStringLiteral("tabWidget_3"));
+        sizePolicy2.setHeightForWidth(tabWidget_3->sizePolicy().hasHeightForWidth());
+        tabWidget_3->setSizePolicy(sizePolicy2);
+        tabWidget_3->setTabPosition(QTabWidget::North);
+        tabWidget_3->setTabShape(QTabWidget::Rounded);
+        tabWidget_3->setIconSize(QSize(16, 16));
+        tabWidget_3->setUsesScrollButtons(true);
+        tabWidget_3->setDocumentMode(false);
+        tabWidget_3->setTabsClosable(false);
+        tabWidget_3->setMovable(false);
+        tabWidget_3->setTabBarAutoHide(false);
+        OriginalImageConfirmation = new QWidget();
+        OriginalImageConfirmation->setObjectName(QStringLiteral("OriginalImageConfirmation"));
+        tabWidget_3->addTab(OriginalImageConfirmation, QString());
+        CurrentConfirmationPanel = new QWidget();
+        CurrentConfirmationPanel->setObjectName(QStringLiteral("CurrentConfirmationPanel"));
+        tabWidget_3->addTab(CurrentConfirmationPanel, QString());
+
+        verticalLayout_10->addWidget(tabWidget_3);
+
+
+        gridLayout_2->addWidget(groupBox_20, 0, 1, 1, 1);
+
+
+        gridLayout_9->addWidget(groupBox_14, 0, 0, 1, 1);
+
         stackedWidget->addWidget(page3);
         page4 = new CompletionPage();
         page4->setObjectName(QStringLiteral("page4"));
+        gridLayout_16 = new QGridLayout(page4);
+        gridLayout_16->setObjectName(QStringLiteral("gridLayout_16"));
+        groupBox_17 = new MyStorageBox(page4);
+        groupBox_17->setObjectName(QStringLiteral("groupBox_17"));
+        sizePolicy.setHeightForWidth(groupBox_17->sizePolicy().hasHeightForWidth());
+        groupBox_17->setSizePolicy(sizePolicy);
+        gridLayout_13 = new QGridLayout(groupBox_17);
+        gridLayout_13->setSpacing(0);
+        gridLayout_13->setObjectName(QStringLiteral("gridLayout_13"));
+        gridLayout_13->setContentsMargins(0, 0, 0, 0);
+        groupBox_21 = new MyStorageBox(groupBox_17);
+        groupBox_21->setObjectName(QStringLiteral("groupBox_21"));
+        sizePolicy4.setHeightForWidth(groupBox_21->sizePolicy().hasHeightForWidth());
+        groupBox_21->setSizePolicy(sizePolicy4);
+        groupBox_21->setFlat(false);
+        gridLayout_14 = new QGridLayout(groupBox_21);
+        gridLayout_14->setObjectName(QStringLiteral("gridLayout_14"));
+        gridLayout_14->setHorizontalSpacing(20);
+        btnBackToConfirmation = new QPushButton(groupBox_21);
+        btnBackToConfirmation->setObjectName(QStringLiteral("btnBackToConfirmation"));
+        btnBackToConfirmation->setFont(font2);
+
+        gridLayout_14->addWidget(btnBackToConfirmation, 0, 0, 1, 1);
+
+        btnRestart = new QPushButton(groupBox_21);
+        btnRestart->setObjectName(QStringLiteral("btnRestart"));
+        btnRestart->setFont(font2);
+
+        gridLayout_14->addWidget(btnRestart, 0, 1, 1, 1);
+
+        btnFinish = new QPushButton(groupBox_21);
+        btnFinish->setObjectName(QStringLiteral("btnFinish"));
+        btnFinish->setFont(font2);
+
+        gridLayout_14->addWidget(btnFinish, 0, 2, 1, 1);
+
+
+        gridLayout_13->addWidget(groupBox_21, 1, 0, 1, 1);
+
+        openGlWidget = new GLWidget(groupBox_17);
+        openGlWidget->setObjectName(QStringLiteral("openGlWidget"));
+
+        gridLayout_13->addWidget(openGlWidget, 0, 0, 1, 1);
+
+
+        gridLayout_16->addWidget(groupBox_17, 0, 0, 1, 1);
+
         stackedWidget->addWidget(page4);
 
-        gridLayout_2->addWidget(stackedWidget, 0, 0, 1, 1);
+        gridLayout_12->addWidget(stackedWidget, 0, 0, 1, 1);
 
         Window_Primary->setCentralWidget(centralwidget);
 #ifndef QT_NO_SHORTCUT
@@ -645,6 +1029,13 @@ public:
         label_10->setBuddy(inputMaxHeight);
         label_11->setBuddy(inputMaxDepth);
         label_12->setBuddy(inputQuality);
+        label_19->setBuddy(inputMeshName);
+        label_20->setBuddy(inputOutputDirectory);
+        label_21->setBuddy(inputMaxVertices);
+        label_22->setBuddy(inputMaxWidth);
+        label_23->setBuddy(inputMaxHeight);
+        label_24->setBuddy(inputMaxDepth);
+        label_25->setBuddy(inputQuality);
 #endif // QT_NO_SHORTCUT
         QWidget::setTabOrder(btnImageLoad, btnContinue);
         QWidget::setTabOrder(btnContinue, btnAutoDetect);
@@ -664,8 +1055,9 @@ public:
 
         retranslateUi(Window_Primary);
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(0);
         tabWidget_2->setCurrentIndex(0);
+        tabWidget_3->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(Window_Primary);
@@ -710,8 +1102,38 @@ public:
         btnBack->setText(QApplication::translate("Window_Primary", "Back", nullptr));
         btnConfirm->setText(QApplication::translate("Window_Primary", "Confirm", nullptr));
         groupBox_12->setTitle(QString());
-        tabWidget_2->setTabText(tabWidget_2->indexOf(OriginalImage), QApplication::translate("Window_Primary", "Original", nullptr));
+        tabWidget_2->setTabText(tabWidget_2->indexOf(OriginalImageSelection), QApplication::translate("Window_Primary", "Original", nullptr));
         tabWidget_2->setTabText(tabWidget_2->indexOf(CurrentSelectionPage), QApplication::translate("Window_Primary", "Current", nullptr));
+        groupBox_15->setTitle(QString());
+        groupBox_16->setTitle(QString());
+        label_16->setText(QApplication::translate("Window_Primary", "<html><head/><body><p align=\"center\"><span style=\" font-size:20pt; text-decoration: underline;\">Confirmation</span></p></body></html>", nullptr));
+        label_17->setText(QApplication::translate("Window_Primary", "<html><head/><body><p><span style=\" font-size:12pt; text-decoration: underline;\">Contour Lines</span></p></body></html>", nullptr));
+        groupBox_18->setTitle(QString());
+        label_18->setText(QApplication::translate("Window_Primary", "<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; text-decoration: underline;\">Preferences</span></p></body></html>", nullptr));
+        label_19->setText(QApplication::translate("Window_Primary", "Mesh Name", nullptr));
+        label_20->setText(QApplication::translate("Window_Primary", "Output Directory", nullptr));
+        label_21->setText(QApplication::translate("Window_Primary", "Max Vertices", nullptr));
+        label_22->setText(QApplication::translate("Window_Primary", "Max Width", nullptr));
+        label_23->setText(QApplication::translate("Window_Primary", "Max Height", nullptr));
+        label_24->setText(QApplication::translate("Window_Primary", "Max Depth", nullptr));
+        label_25->setText(QApplication::translate("Window_Primary", "Quality", nullptr));
+        label_26->setText(QString());
+        inputQuality_2->setTitle(QString());
+        radioButton_4->setText(QApplication::translate("Window_Primary", "Low", nullptr));
+        radioButton_5->setText(QApplication::translate("Window_Primary", "Medium", nullptr));
+        radioButton_6->setText(QApplication::translate("Window_Primary", "High", nullptr));
+        label_27->setText(QString());
+        groupBox_19->setTitle(QString());
+        btnBackToSelection->setText(QApplication::translate("Window_Primary", "Back to Selection", nullptr));
+        btnConfirmOnConfirmation->setText(QApplication::translate("Window_Primary", "Generate", nullptr));
+        groupBox_20->setTitle(QString());
+        tabWidget_3->setTabText(tabWidget_3->indexOf(OriginalImageConfirmation), QApplication::translate("Window_Primary", "Original", nullptr));
+        tabWidget_3->setTabText(tabWidget_3->indexOf(CurrentConfirmationPanel), QApplication::translate("Window_Primary", "Current", nullptr));
+        groupBox_17->setTitle(QString());
+        groupBox_21->setTitle(QString());
+        btnBackToConfirmation->setText(QApplication::translate("Window_Primary", "Back to Confirmation", nullptr));
+        btnRestart->setText(QApplication::translate("Window_Primary", "Restart", nullptr));
+        btnFinish->setText(QApplication::translate("Window_Primary", "Finish", nullptr));
     } // retranslateUi
 
 };

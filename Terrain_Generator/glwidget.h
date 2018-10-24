@@ -33,6 +33,7 @@ public:
     void setClearColor(const QColor &color);
 
 
+    void SetActive(bool value);
 
 signals:
     void clicked();
@@ -57,6 +58,7 @@ private:
     int xRot;
     int yRot;
     int zRot;
+    bool active;
     QOpenGLTexture* textures[6];
     QOpenGLShaderProgram* program;
     QOpenGLBuffer vbo;

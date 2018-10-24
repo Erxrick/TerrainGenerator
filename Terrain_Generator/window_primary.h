@@ -48,6 +48,16 @@ private slots:
 
     void on_toolBtnOutputDirectory_clicked();
 
+    void on_btnBackToSelection_clicked();
+
+    void on_btnConfirmOnConfirmation_clicked();
+
+    void on_btnBackToConfirmation_clicked();
+
+    void on_btnRestart_clicked();
+
+    void on_btnFinish_clicked();
+
 private:
     Ui::Window_Primary *ui;
 

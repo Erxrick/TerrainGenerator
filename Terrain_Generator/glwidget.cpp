@@ -15,6 +15,7 @@
 
 GLWidget::GLWidget(QWidget *parent) : QOpenGLWidget(parent), clearColor(Qt::green), xRot(0), yRot(0), zRot(0), program(nullptr)
 {
+
 }
 
 GLWidget::~GLWidget()
@@ -47,6 +48,11 @@ void GLWidget::setClearColor(const QColor &color)
 {
     clearColor = color;
     update();
+}
+
+void GLWidget::SetActive(bool value)
+{
+    active = value;
 }
 
 void GLWidget::initializeGL()
@@ -101,42 +107,30 @@ void GLWidget::initializeGL()
 
 void GLWidget::paintGL()
 {
-    glClearColor(clearColor.redF(), clearColor.greenF(), clearColor.blueF(), clearColor.alphaF());
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    if(active)
+    {
+        glClearColor(clearColor.redF(), clearColor.greenF(), clearColor.blueF(), clearColor.alphaF());
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    QMatrix4x4 m;
-    m.ortho(-0.5f, +0.5f, +0.5f, -0.5f, 4.0f, 15.0f);
-    m.translate(0.0f, 0.0f, -10.0f);
-    m.rotate(xRot / 16.0f, 1.0f, 0.0f, 0.0f);
-    m.rotate(yRot / 16.0f, 0.0f, 1.0f, 0.0f);
-    m.rotate(zRot / 16.0f, 0.0f, 0.0f, 1.0f);
-
-
-    program->setUniformValue("matrix", m);
-    program->enableAttributeArray(PROGRAM_VERTEX_ATTRIBUTE);
-    program->enableAttributeArray(PROGRAM_TEXCOORD_ATTRIBUTE);
-    program->setAttributeBuffer(PROGRAM_VERTEX_ATTRIBUTE, GL_FLOAT, 0, 3, 5 * sizeof(GLfloat));
-    program->setAttributeBuffer(PROGRAM_TEXCOORD_ATTRIBUTE, GL_FLOAT, 3 * sizeof(GLfloat), 2, 5 * sizeof(GLfloat));
-
-    for (int i = 0; i < 6; ++i) {
-          glDrawArrays(GL_TRIANGLE_FAN, i * 4, 4);
-      }
-
-//    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-//    glMatrixMode(GL_MODELVIEW);
-//    glLoadIdentity();
-
-//    gluLookAt(0,0,5, 0,0,0, 0,1,0);
-
-//    glColor3f(1,0,0);
-//    GLUquadricObj* s = gluNewQuadric();
-//    gluSphere(s, 1, 200, 200);
+        QMatrix4x4 m;
+        m.ortho(-0.5f, +0.5f, +0.5f, -0.5f, 4.0f, 15.0f);
+        m.translate(0.0f, 0.0f, -10.0f);
+        m.rotate(xRot / 16.0f, 1.0f, 0.0f, 0.0f);
+        m.rotate(yRot / 16.0f, 0.0f, 1.0f, 0.0f);
+        m.rotate(zRot / 16.0f, 0.0f, 0.0f, 1.0f);
 
 
-    //qDebug() << mesh->status();
+        program->setUniformValue("matrix", m);
+        program->enableAttributeArray(PROGRAM_VERTEX_ATTRIBUTE);
+        program->enableAttributeArray(PROGRAM_TEXCOORD_ATTRIBUTE);
+        program->setAttributeBuffer(PROGRAM_VERTEX_ATTRIBUTE, GL_FLOAT, 0, 3, 5 * sizeof(GLfloat));
+        program->setAttributeBuffer(PROGRAM_TEXCOORD_ATTRIBUTE, GL_FLOAT, 3 * sizeof(GLfloat), 2, 5 * sizeof(GLfloat));
 
-
+        for (int i = 0; i < 6; ++i)
+        {
+            glDrawArrays(GL_TRIANGLE_FAN, i * 4, 4);
+        }
+    }
 }
 
 
