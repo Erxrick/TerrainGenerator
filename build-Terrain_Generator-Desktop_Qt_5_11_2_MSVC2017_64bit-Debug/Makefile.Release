@@ -85,7 +85,8 @@ DIST          =  ..\Terrain_Generator\mainwindow.h \
 		..\Terrain_Generator\selectionpage.h \
 		..\Terrain_Generator\confirmationpage.h \
 		..\Terrain_Generator\completionpage.h \
-		..\Terrain_Generator\mystoragebox.h ..\Terrain_Generator\main.cpp \
+		..\Terrain_Generator\mystoragebox.h \
+		stddef.h ..\Terrain_Generator\main.cpp \
 		..\Terrain_Generator\mainwindow.cpp \
 		..\Terrain_Generator\glwidget.cpp \
 		..\Terrain_Generator\window_primary.cpp \
