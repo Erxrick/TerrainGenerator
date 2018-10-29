@@ -65,29 +65,26 @@ void GLWidget::initializeGL()
     glEnable(GL_CULL_FACE);
 
 #define PROGRAM_VERTEX_ATTRIBUTE 0
-#define PROGRAM_TEXCOORD_ATTRIBUTE 1
 
     QOpenGLShader *vshader = new QOpenGLShader(QOpenGLShader::Vertex, this);
        const char *vsrc =
            "attribute highp vec4 vertex;\n"
-           "attribute mediump vec4 texCoord;\n"
-           "varying mediump vec4 texc;\n"
+           "varying mediump vec4 color;\n"
            "uniform mediump mat4 matrix;\n"
            "void main(void)\n"
            "{\n"
            "    gl_Position = matrix * vertex;\n"
-           "    texc = texCoord;\n"
+           "    color = vertex;\n"
            "}\n";
        vshader->compileSourceCode(vsrc);
 
        QOpenGLShader *fshader = new QOpenGLShader(QOpenGLShader::Fragment, this);
                     //       texture2D(texture, texc.st);\n
        const char *fsrc =
-           "uniform sampler2D texture;\n"
-           "varying mediump vec4 texc;\n"
+           "varying mediump vec4 color;\n"
            "void main(void)\n"
            "{\n"
-           "    gl_FragColor = texc;\n"
+           "    gl_FragColor = color;\n"
            "}\n";
        fshader->compileSourceCode(fsrc);
 
@@ -95,11 +92,9 @@ void GLWidget::initializeGL()
        program->addShader(vshader);
        program->addShader(fshader);
        program->bindAttributeLocation("vertex", PROGRAM_VERTEX_ATTRIBUTE);
-       program->bindAttributeLocation("texCoord", PROGRAM_TEXCOORD_ATTRIBUTE);
        program->link();
 
        program->bind();
-       program->setUniformValue("texture", 0);
 
 
 
@@ -122,9 +117,7 @@ void GLWidget::paintGL()
 
         program->setUniformValue("matrix", m);
         program->enableAttributeArray(PROGRAM_VERTEX_ATTRIBUTE);
-        program->enableAttributeArray(PROGRAM_TEXCOORD_ATTRIBUTE);
-        program->setAttributeBuffer(PROGRAM_VERTEX_ATTRIBUTE, GL_FLOAT, 0, 3, 5 * sizeof(GLfloat));
-        program->setAttributeBuffer(PROGRAM_TEXCOORD_ATTRIBUTE, GL_FLOAT, 3 * sizeof(GLfloat), 2, 5 * sizeof(GLfloat));
+        program->setAttributeBuffer(PROGRAM_VERTEX_ATTRIBUTE, GL_FLOAT, 0, 3, 3 * sizeof(GLfloat));
 
         for (int i = 0; i < 6; ++i)
         {
@@ -184,17 +177,14 @@ void GLWidget::makeObject()
         { { -1, -1, +1 }, { +1, -1, +1 }, { +1, +1, +1 }, { -1, +1, +1 } }
     };
 
-
     QVector<GLfloat> vertData;
     for (int i = 0; i < 6; ++i) {
         for (int j = 0; j < 4; ++j) {
             // vertex position
-            vertData.append(0.2 * coords[i][j][0]);
-            vertData.append(0.2 * coords[i][j][1]);
-            vertData.append(0.2 * coords[i][j][2]);
-            // texture coordinate
-            vertData.append(j == 0 || j == 3);
-            vertData.append(j == 0 || j == 1);
+            vertData.append(0.2f * coords[i][j][0]);
+            vertData.append(0.2f * coords[i][j][1]);
+            vertData.append(0.2f * coords[i][j][2]);
+
         }
     }
 
