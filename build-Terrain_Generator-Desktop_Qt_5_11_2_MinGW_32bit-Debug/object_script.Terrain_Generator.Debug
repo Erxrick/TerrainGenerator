@@ -8,6 +8,9 @@ INPUT(
 ./debug\confirmationpage.o
 ./debug\completionpage.o
 ./debug\mystoragebox.o
+./debug\cgaldemocode.o
+./debug\tiny_obj_loader.o
+./debug\cgaldemoconvexhullcode.o
 ./debug\moc_mainwindow.o
 ./debug\moc_glwidget.o
 ./debug\moc_window_primary.o

@@ -23,6 +23,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 CONFIG += c++11
+CONFIG += resources_big
 
 
 SOURCES += \
@@ -35,6 +36,9 @@ SOURCES += \
 	confirmationpage.cpp \
 	completionpage.cpp \
 	mystoragebox.cpp \
+    cgaldemocode.cpp \
+    tiny_obj_loader.cc \
+    cgaldemoconvexhullcode.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -45,15 +49,37 @@ HEADERS += \
 	selectionpage.h \
 	confirmationpage.h \
 	completionpage.h \
-	mystoragebox.h \
+        mystoragebox.h \
+    cgaldemocode.h \
+    tiny_obj_loader.h \
+    cgaldemoconvexhullcode.h
 
 
 FORMS += \
         mainwindow.ui \
     window_primary.ui \
 
+INCLUDEPATH += C:/dev/CGAL-4.13/build/include
+INCLUDEPATH += C:/dev/CGAL-4.13/include
+INCLUDEPATH += C:/local/boost_1_68_0
+INCLUDEPATH += C:/dev/CGAL-4.13/auxiliary/gmp/include
+INCLUDEPATH += C:/dev/Eigen/
 
-LIBS += libopengl32 -lGLU32
+
+
+LIBS += -LC:/dev/CGAL-4.13/build/lib
+LIBS += -LC:/local/boost_1_68_0/libs
+LIBS += -LC:/local/boost_1_68_0/lib32-msvc-12.0
+LIBS += -LC:/dev/CGAL-4.13/auxiliary/gmp/lib
+
+
+LIBS += libopengl32 -lGLU32 -lCGAL-vc140-mt-gd-4.13 -lCGAL_ImageIO-vc140-mt-gd-4.13 -lCGAL_Core-vc140-mt-gd-4.13 -llibgmp-10
+
+#-lboost_thread-vc120-mt-gd-x32-1_68 -lboost_serialization-vc120-mt-gd-x32-1_68 -lboost_date_time-vc120-mt-gd-x32-1_68 -lboost_system-vc120-mt-gd-x32-1_68
+
+
+QMAKE_CXXFLAGS += -frounding-math -O3
+QMAKE_CXXFLAGS += -ftrack-macro-expansion=0
 
 
 # Default rules for deployment.

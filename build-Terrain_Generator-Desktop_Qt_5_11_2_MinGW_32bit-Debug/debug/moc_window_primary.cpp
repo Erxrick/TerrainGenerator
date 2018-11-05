@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Window_Primary_t {
-    QByteArrayData data[12];
-    char stringdata0[280];
+    QByteArrayData data[15];
+    char stringdata0[346];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -42,7 +42,10 @@ QT_MOC_LITERAL(7, 138, 29), // "on_btnBackToSelection_clicked"
 QT_MOC_LITERAL(8, 168, 35), // "on_btnConfirmOnConfirmation_c..."
 QT_MOC_LITERAL(9, 204, 32), // "on_btnBackToConfirmation_clicked"
 QT_MOC_LITERAL(10, 237, 21), // "on_btnRestart_clicked"
-QT_MOC_LITERAL(11, 259, 20) // "on_btnFinish_clicked"
+QT_MOC_LITERAL(11, 259, 20), // "on_btnFinish_clicked"
+QT_MOC_LITERAL(12, 280, 29), // "on_tabWidget_2_currentChanged"
+QT_MOC_LITERAL(13, 310, 5), // "index"
+QT_MOC_LITERAL(14, 316, 29) // "on_tabWidget_3_currentChanged"
 
     },
     "Window_Primary\0on_btnConfirm_clicked\0"
@@ -52,7 +55,9 @@ QT_MOC_LITERAL(11, 259, 20) // "on_btnFinish_clicked"
     "on_btnBackToSelection_clicked\0"
     "on_btnConfirmOnConfirmation_clicked\0"
     "on_btnBackToConfirmation_clicked\0"
-    "on_btnRestart_clicked\0on_btnFinish_clicked"
+    "on_btnRestart_clicked\0on_btnFinish_clicked\0"
+    "on_tabWidget_2_currentChanged\0index\0"
+    "on_tabWidget_3_currentChanged"
 };
 #undef QT_MOC_LITERAL
 
@@ -62,7 +67,7 @@ static const uint qt_meta_data_Window_Primary[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
+      12,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -70,16 +75,18 @@ static const uint qt_meta_data_Window_Primary[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   64,    2, 0x08 /* Private */,
-       3,    0,   65,    2, 0x08 /* Private */,
-       4,    0,   66,    2, 0x08 /* Private */,
-       5,    0,   67,    2, 0x08 /* Private */,
-       6,    0,   68,    2, 0x08 /* Private */,
-       7,    0,   69,    2, 0x08 /* Private */,
-       8,    0,   70,    2, 0x08 /* Private */,
-       9,    0,   71,    2, 0x08 /* Private */,
-      10,    0,   72,    2, 0x08 /* Private */,
-      11,    0,   73,    2, 0x08 /* Private */,
+       1,    0,   74,    2, 0x08 /* Private */,
+       3,    0,   75,    2, 0x08 /* Private */,
+       4,    0,   76,    2, 0x08 /* Private */,
+       5,    0,   77,    2, 0x08 /* Private */,
+       6,    0,   78,    2, 0x08 /* Private */,
+       7,    0,   79,    2, 0x08 /* Private */,
+       8,    0,   80,    2, 0x08 /* Private */,
+       9,    0,   81,    2, 0x08 /* Private */,
+      10,    0,   82,    2, 0x08 /* Private */,
+      11,    0,   83,    2, 0x08 /* Private */,
+      12,    1,   84,    2, 0x08 /* Private */,
+      14,    1,   87,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -92,6 +99,8 @@ static const uint qt_meta_data_Window_Primary[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,   13,
+    QMetaType::Void, QMetaType::Int,   13,
 
        0        // eod
 };
@@ -112,10 +121,11 @@ void Window_Primary::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         case 7: _t->on_btnBackToConfirmation_clicked(); break;
         case 8: _t->on_btnRestart_clicked(); break;
         case 9: _t->on_btnFinish_clicked(); break;
+        case 10: _t->on_tabWidget_2_currentChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 11: _t->on_tabWidget_3_currentChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 QT_INIT_METAOBJECT const QMetaObject Window_Primary::staticMetaObject = {
@@ -143,13 +153,13 @@ int Window_Primary::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 10)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 12;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 10)
+        if (_id < 12)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 10;
+        _id -= 12;
     }
     return _id;
 }

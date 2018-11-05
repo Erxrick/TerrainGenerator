@@ -44,10 +44,7 @@ Window_Primary::Window_Primary(QWidget *parent) : QMainWindow(parent), ui(new Ui
 
 }
 
-//Window_Primary::~Window_Primary()
-//{
-//    delete ui;
-//}
+
 
 
 
@@ -75,6 +72,10 @@ void Window_Primary::on_btnImageLoad_clicked()
         paletteForOriginalConfirmationPanel.setBrush(QPalette::Background, scaledImageForConfirmationPanel);
         ui->OriginalImageConfirmation->setPalette(paletteForOriginalConfirmationPanel);
         ui->OriginalImageConfirmation->setAutoFillBackground(true);
+
+
+        QImage selectionPaneImage = primaryImage.toImage();
+
     }
 
 
@@ -115,6 +116,10 @@ void Window_Primary::updateImages()
         ui->OriginalImageConfirmation->setPalette(paletteForOriginalConfirmationPanel);
         ui->OriginalImageConfirmation->setAutoFillBackground(true);
 
+    }
+    else
+    {
+        ui->OriginalImageP1->setAutoFillBackground(false);
     }
 }
 
@@ -192,6 +197,7 @@ void Window_Primary::on_btnRestart_clicked()
     ui->stackedWidget->setCurrentIndex(0);
     //reset everything here
     primaryImage = QPixmap();
+    updateImages();
     completionPage->glWidget->SetActive(false);
 }
 
@@ -200,4 +206,14 @@ void Window_Primary::on_btnFinish_clicked()
 {
     close();
 
+}
+
+void Window_Primary::on_tabWidget_2_currentChanged(int index)
+{
+    updateImages();
+}
+
+void Window_Primary::on_tabWidget_3_currentChanged(int index)
+{
+    updateImages();
 }

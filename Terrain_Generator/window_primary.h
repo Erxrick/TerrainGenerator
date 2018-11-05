@@ -58,6 +58,10 @@ private slots:
 
     void on_btnFinish_clicked();
 
+    void on_tabWidget_2_currentChanged(int index);
+
+    void on_tabWidget_3_currentChanged(int index);
+
 private:
     Ui::Window_Primary *ui;
 

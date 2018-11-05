@@ -8,6 +8,9 @@ INPUT(
 ./release\confirmationpage.o
 ./release\completionpage.o
 ./release\mystoragebox.o
+./release\cgaldemocode.o
+./release\tiny_obj_loader.o
+./release\cgaldemoconvexhullcode.o
 ./release\moc_mainwindow.o
 ./release\moc_glwidget.o
 ./release\moc_window_primary.o

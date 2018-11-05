@@ -475,7 +475,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 372, 284));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 367, 284));
         formLayout = new QFormLayout(scrollAreaWidgetContents);
         formLayout->setObjectName(QStringLiteral("formLayout"));
         label_4 = new QLabel(scrollAreaWidgetContents);
@@ -1055,7 +1055,7 @@ public:
 
         retranslateUi(Window_Primary);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(1);
         tabWidget_2->setCurrentIndex(1);
         tabWidget_3->setCurrentIndex(0);
 

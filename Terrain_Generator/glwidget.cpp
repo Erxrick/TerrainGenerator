@@ -13,6 +13,8 @@
 #include <QMouseEvent>
 
 
+//#include <CGAL/Triangulation_vertex_base_with_info_3.h>
+
 GLWidget::GLWidget(QWidget *parent) : QOpenGLWidget(parent), clearColor(Qt::green), xRot(0), yRot(0), zRot(0), program(nullptr)
 {
 
