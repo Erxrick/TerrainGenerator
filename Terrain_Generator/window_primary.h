@@ -62,11 +62,16 @@ private slots:
 
     void on_tabWidget_3_currentChanged(int index);
 
+    void on_lblSelectionImage_clicked(QMouseEvent * event);
+
+
+
 private:
     Ui::Window_Primary *ui;
 
     void updateImages();
     QPixmap primaryImage;
+
 };
 
 #endif // WINDOW_PRIMARY_H

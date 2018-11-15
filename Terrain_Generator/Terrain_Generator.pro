@@ -26,6 +26,8 @@ CONFIG += c++11
 CONFIG += resources_big
 
 
+
+
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
@@ -37,8 +39,8 @@ SOURCES += \
 	completionpage.cpp \
 	mystoragebox.cpp \
     cgaldemocode.cpp \
-    tiny_obj_loader.cc \
-    cgaldemoconvexhullcode.cpp
+    cgaldemoconvexhullcode.cpp \
+    imageholder.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -51,35 +53,54 @@ HEADERS += \
 	completionpage.h \
         mystoragebox.h \
     cgaldemocode.h \
-    tiny_obj_loader.h \
-    cgaldemoconvexhullcode.h
+    cgaldemoconvexhullcode.h \
+    imageholder.h
 
 
 FORMS += \
         mainwindow.ui \
     window_primary.ui \
 
+INCLUDEPATH += "C:/Program Files/boost/boost_1_68_0"
+INCLUDEPATH += C:/dev/eigen-eigen-b3f3d4950030
+INCLUDEPATH += C:/dev/CGAL-4.13/auxiliary/gmp/include
 INCLUDEPATH += C:/dev/CGAL-4.13/build/include
 INCLUDEPATH += C:/dev/CGAL-4.13/include
-INCLUDEPATH += C:/local/boost_1_68_0
-INCLUDEPATH += C:/dev/CGAL-4.13/auxiliary/gmp/include
-INCLUDEPATH += C:/dev/Eigen/
 
 
 
-LIBS += -LC:/dev/CGAL-4.13/build/lib
-LIBS += -LC:/local/boost_1_68_0/libs
-LIBS += -LC:/local/boost_1_68_0/lib32-msvc-12.0
-LIBS += -LC:/dev/CGAL-4.13/auxiliary/gmp/lib
+LIBS += -L"C:/dev/CGAL-4.13/build/lib/Debug"
+LIBS += -L"C:/Program Files/boost_1_68_0/libs"
+LIBS += -L"C:/dev/CGAL-4.13/auxiliary/gmp/lib"
 
 
-LIBS += libopengl32 -lGLU32 -lCGAL-vc140-mt-gd-4.13 -lCGAL_ImageIO-vc140-mt-gd-4.13 -lCGAL_Core-vc140-mt-gd-4.13 -llibgmp-10
+LIBS += -lGLU32\
+ -llibgmp-10\
+ -llibmpfr-4\
+# -lCGAL-vc140-mt-gd-4.13\
+ #-lCGAL_Core-vc140-mt-gd-4.13\
+ #-lCGAL_ImageIO-vc140-mt-gd-4.13
+#-lCGAL-vc140-mt-gd-4.13 -lCGAL_ImageIO-vc140-mt-gd-4.13 -lCGAL_Core-vc140-mt-gd-4.13
 
-#-lboost_thread-vc120-mt-gd-x32-1_68 -lboost_serialization-vc120-mt-gd-x32-1_68 -lboost_date_time-vc120-mt-gd-x32-1_68 -lboost_system-vc120-mt-gd-x32-1_68
+LIBS += C:/dev/CGAL-4.13/build/lib/Debug/CGAL-vc140-mt-gd-4.13.lib
+LIBS += C:/dev/CGAL-4.13/build/lib/Debug/CGAL_Core-vc140-mt-gd-4.13.lib
+LIBS += C:/dev/CGAL-4.13/build/lib/Debug/CGAL_ImageIO-vc140-mt-gd-4.13.lib
+LIBS += C:/dev/CGAL-4.13/build/lib/Debug/CGAL_Qt5-vc140-mt-gd-4.13.lib
 
 
-QMAKE_CXXFLAGS += -frounding-math -O3
-QMAKE_CXXFLAGS += -ftrack-macro-expansion=0
+
+#LIBS += C:/dev/CGAL-4.13/build/lib/CGAL-vc140-mt-gd-4.13.lib
+#LIBS += C:/dev/CGAL-4.13/build/lib/CGAL_Core-vc140-mt-4.13.lib
+#LIBS += C:/dev/CGAL-4.13/build/lib/CGAL_Core-vc140-mt-gd-4.13.lib
+#LIBS += C:/dev/CGAL-4.13/build/lib/CGAL_ImageIO-vc140-mt-4.13.lib
+#LIBS += C:/dev/CGAL-4.13/build/lib/CGAL_ImageIO-vc140-mt-gd-4.13.lib
+#LIBS += C:/dev/CGAL-4.13/build/lib/CGAL_Qt5-vc140-mt-4.13.lib
+#LIBS += C:/dev/CGAL-4.13/build/lib/CGAL_Qt5-vc140-mt-gd-4.13.lib
+#LIBS += C:/dev/CGAL-4.13/build/lib/CGAL-vc140-mt-4.13.lib
+
+
+#QMAKE_CXXFLAGS += -frounding-math -O3
+#QMAKE_CXXFLAGS += -ftrack-macro-expansion=0
 
 
 # Default rules for deployment.

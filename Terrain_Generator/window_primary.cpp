@@ -8,7 +8,11 @@
 #include "confirmationpage.h"
 #include "completionpage.h"
 
+#include "imageholder.h"
 
+
+#include <QDebug>
+#include <QMouseEvent>
 
 Window_Primary::Window_Primary(QWidget *parent) : QMainWindow(parent), ui(new Ui::Window_Primary)
 {
@@ -25,6 +29,7 @@ Window_Primary::Window_Primary(QWidget *parent) : QMainWindow(parent), ui(new Ui
         selectionPage = ui->page2;
         selectionPage->CurrentImagePage  = ui->CurrentSelectionPage;
         selectionPage->OriginalImagePage = ui->OriginalImageSelection;
+
     }
 
 // Confirmation Page Setting of Pointer Stuff for ease of access
@@ -74,7 +79,12 @@ void Window_Primary::on_btnImageLoad_clicked()
         ui->OriginalImageConfirmation->setAutoFillBackground(true);
 
 
-        QImage selectionPaneImage = primaryImage.toImage();
+        //Get the first SelectionPage set up with the stack
+        selectionPage->EditedImages.clear();
+        selectionPage->selectionPaneImage = primaryImage.toImage();
+        selectionPage->EditedImages.push_front(selectionPage->selectionPaneImage);
+
+
 
     }
 
@@ -115,6 +125,20 @@ void Window_Primary::updateImages()
         paletteForOriginalConfirmationPanel.setBrush(QPalette::Background, scaledImageForConfirmationPanel);
         ui->OriginalImageConfirmation->setPalette(paletteForOriginalConfirmationPanel);
         ui->OriginalImageConfirmation->setAutoFillBackground(true);
+
+
+
+        //Grab the top Image from the stack and then resize it for the panel
+        selectionPage->selectionPaneImage = selectionPage->EditedImages.top();
+        selectionPage->selectionPaneImage = selectionPage->selectionPaneImage.scaled(ui->CurrentSelectionPage->size(), Qt::IgnoreAspectRatio);
+        selectionPage->selectionPaneImage = selectionPage->selectionPaneImage.convertToFormat(QImage::Format::Format_RGB32); //setting it to be a 32 bit image
+//        QPalette paletteForCurrentSelectionPanel;
+//        paletteForCurrentSelectionPanel.setBrush(QPalette::Background, selectionPage->selectionPaneImage);
+//        ui->CurrentSelectionPage->setPalette(paletteForCurrentSelectionPanel);
+//        ui->CurrentSelectionPage->setAutoFillBackground(true);
+
+        ui->lblSelectionImage->setPixmap(QPixmap::fromImage(selectionPage->selectionPaneImage));
+
 
     }
     else
@@ -199,6 +223,7 @@ void Window_Primary::on_btnRestart_clicked()
     primaryImage = QPixmap();
     updateImages();
     completionPage->glWidget->SetActive(false);
+
 }
 
 ///This is for the final program to finish and close the application
@@ -208,12 +233,69 @@ void Window_Primary::on_btnFinish_clicked()
 
 }
 
+///This is for when the tabs are swapped on the Selection Page
 void Window_Primary::on_tabWidget_2_currentChanged(int index)
 {
     updateImages();
 }
 
+///This is for when the tabs are swapped on the Confirmation Page
 void Window_Primary::on_tabWidget_3_currentChanged(int index)
 {
     updateImages();
+}
+
+///This detects where on the lbl was clicked on the Selection page
+void Window_Primary::on_lblSelectionImage_clicked(QMouseEvent * event)
+{
+
+    if(!selectionPage->InProgress)
+    {
+        selectionPage->InProgress = true;
+        //this method took 2 hours to figure out how to get working cause im bad & dumb
+       // qDebug("thing");
+        QString s1 = QString::number(event->x());
+        QString s2 = QString::number(event->y());
+        QString literal1 = "x:";
+        QString literal2 = " y:";
+
+
+        qDebug(qUtf8Printable(literal1 + s1 + literal2 + s2));
+
+        if(!selectionPage->selectionPaneImage.isNull())
+        {
+            QPoint point = QPoint(event->x(), event->y());
+
+            //Testing creating a tolerance threshold for pixel analysiss
+            int red, green, blue;
+
+            QColor pixelColor = selectionPage->selectionPaneImage.pixelColor(event->x(), event->y());
+            pixelColor.QColor::getRgb(&red, &green, &blue);
+
+            bool returnVal = selectionPage->CheckColorTolerance(&pixelColor);
+
+            qDebug(qUtf8Printable(QString::number(returnVal)));
+
+            qDebug(qUtf8Printable(QString::number(true) + "= true"));
+
+            qDebug(qUtf8Printable("Red:" + QString::number(red) + " Green:" + QString::number(green) + " Blue:" + QString::number(blue)));
+            qDebug(qUtf8Printable(pixelColor.name()));
+
+
+            ///Code that is being developed for the magic wand tool
+            selectionPage->AddSelectionLine(point);
+            selectionPage->ColorImageBasedOnPixelMap();
+
+            selectionPage->EditedImages.push(selectionPage->selectionPaneImage);
+
+            ui->lblSelectionImage->setPixmap(QPixmap::fromImage(selectionPage->selectionPaneImage));
+            selectionPage->InProgress = false;
+        }
+
+    }
+    else
+    {
+        QMessageBox::warning(this, tr("Terrain Generator"), tr("There is already a process ocurring."));
+    }
+
 }

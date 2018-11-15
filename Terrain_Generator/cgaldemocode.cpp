@@ -1,10 +1,6 @@
 //#include "cgaldemocode.h"
 
-//#include <CGAL/IO/io.h>
-//#include <CGAL/IO/io_impl.h>
-//#include <CGAL/IO/io_tags.h>
-//#include <CGAL/assertions_behaviour.h>
-//#include <CGAL/assertions_impl.h>
+
 
 //#include <CGAL/Exact_predicates_inexact_constructions_kernel.h>
 //#include <CGAL/Triangulation_3.h>

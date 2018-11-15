@@ -39,18 +39,6 @@
     </size>
    </property>
    <layout class="QGridLayout" name="gridLayout_12">
-    <property name="leftMargin">
-     <number>0</number>
-    </property>
-    <property name="topMargin">
-     <number>0</number>
-    </property>
-    <property name="rightMargin">
-     <number>0</number>
-    </property>
-    <property name="bottomMargin">
-     <number>0</number>
-    </property>
     <item row="0" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="enabled">
@@ -701,7 +689,7 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>367</width>
+                      <width>372</width>
                       <height>284</height>
                      </rect>
                     </property>
@@ -1119,9 +1107,42 @@
                  </attribute>
                 </widget>
                 <widget class="QWidget" name="CurrentSelectionPage">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <attribute name="title">
                   <string>Current</string>
                  </attribute>
+                 <layout class="QHBoxLayout" name="horizontalLayout">
+                  <property name="spacing">
+                   <number>0</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>0</number>
+                  </property>
+                  <item>
+                   <widget class="ImageHolder" name="lblSelectionImage">
+                    <property name="mouseTracking">
+                     <bool>false</bool>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
                 </widget>
                </widget>
               </item>
@@ -1846,6 +1867,15 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>GLWidget</class>
+   <extends>QWidget</extends>
+   <header>glwidget.h</header>
+   <container>1</container>
+   <slots>
+    <slot>createNewCube()</slot>
+   </slots>
+  </customwidget>
+  <customwidget>
    <class>MainMenuPage</class>
    <extends>QWidget</extends>
    <header>mainmenupage.h</header>
@@ -1876,13 +1906,9 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>GLWidget</class>
-   <extends>QWidget</extends>
-   <header>glwidget.h</header>
-   <container>1</container>
-   <slots>
-    <slot>createNewCube()</slot>
-   </slots>
+   <class>ImageHolder</class>
+   <extends>QLabel</extends>
+   <header>imageholder.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
