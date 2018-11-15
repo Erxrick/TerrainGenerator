@@ -269,13 +269,11 @@ void Window_Primary::on_lblSelectionImage_clicked(QMouseEvent * event)
             QPoint point = QPoint(event->x(), event->y());
 
             ///This method is currently being built to extend the selection size
-            QList<QPoint> points = selectionPage->CheckForSelection(point);
+            point = selectionPage->CheckForSelection(point);
             //Testing creating a tolerance threshold for pixel analysiss
 
             ///Code that is being developed for the magic wand tool
-            foreach (QPoint p, points) {
-                selectionPage->AddSelectionLine(p);
-            }
+            selectionPage->AddSelectionLine(point);
             selectionPage->ColorImageBasedOnPixelMap(Qt::GlobalColor::green);
 
             selectionPage->EditedImages.push(selectionPage->selectionPaneImage);

@@ -233,10 +233,9 @@ QString SelectionPage::PointToString(const QPoint& point)
     return QString("(" + QString::number(point.x()) +", " + QString::number(point.y()) + ")");
 }
 
-QList<QPoint> SelectionPage::CheckForSelection(const QPoint& point)
+QPoint SelectionPage::CheckForSelection(const QPoint& point)
 {
     QList<QPoint> selectionRange;
-    QList<QPoint> returnVal;
     int x = point.x();
     int y = point.y();
 
@@ -291,19 +290,18 @@ QList<QPoint> SelectionPage::CheckForSelection(const QPoint& point)
             QColor pCol = selectionPaneImage.pixelColor(p);
             if(CheckColorTolerance(&pCol))
             {
-                returnVal.append(p);
+                return p;
             }
         }
     }
-
-
-    return returnVal;
+    return point;
 }
 
 void SelectionPage::PushMapToStorage()
 {
     pixelStorage.append(pixelMap);
     pixelMap = QMap<QString, QPoint>();
+    qDebug(qUtf8Printable(QString::number(pixelMap.count())));
 }
 
 void SelectionPage::UndoLastLine()
@@ -315,8 +313,13 @@ void SelectionPage::UndoLastLine()
         ColorImageBasedOnPixelMap(Qt::GlobalColor::black);
         EditedImages.push(selectionPaneImage);
         pixelStorage.pop_back();
+        pixelMap = QMap<QString, QPoint>();
         qDebug(qUtf8Printable(QString("This is from the end of the undo last line. Pixel map Size:") + QString::number(pixelMap.count())));
-
+    }
+    else
+    {
+        pixelStorage = QList<QMap<QString, QPoint>>();
+        pixelMap = QMap<QString, QPoint>();
     }
 }
 

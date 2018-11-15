@@ -28,7 +28,7 @@ public:
     QStack<QImage> EditedImages;
 
     bool CheckColorTolerance(QColor* color);
-    QList<QPoint> CheckForSelection(const QPoint& point);
+    QPoint CheckForSelection(const QPoint& point);
     void PushMapToStorage();
     void UndoLastLine();
 
