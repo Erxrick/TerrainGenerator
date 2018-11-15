@@ -45,12 +45,12 @@ bool SelectionPage::CheckColorTolerance(QColor* color)
 
 
 ///This is a temporary solution for demonstration that my algorithm is working
-void SelectionPage::ColorImageBasedOnPixelMap()
+void SelectionPage::ColorImageBasedOnPixelMap(const QColor& color)
 {
     for(auto iter = pixelMap.begin();iter != pixelMap.end();iter++)
     {
 //       selectionPaneImage.setPixel(iter.value(), Qt::GlobalColor::white);
-        selectionPaneImage.setPixelColor(iter.value(), Qt::GlobalColor::green);
+        selectionPaneImage.setPixelColor(iter.value(), color);
 //        qDebug(qUtf8Printable(PointToString(iter.value())));
     }
 
@@ -63,8 +63,10 @@ void SelectionPage::ColorImageBasedOnPixelMap()
 ///Not fully implemented, can use polish as well
 void SelectionPage::AddSelectionLine(const QPoint& point)
 {
-    //reset pixelmap for new line detection **TEMPORARY**
-    pixelMap.clear();
+
+    if(pixelMap.contains(PointToString(point)))
+        return;
+
 
     //Check initial point, may want to implement a radius to check around the clicked point to make the program easier
     QColor pCol = selectionPaneImage.pixelColor(point);
@@ -230,6 +232,95 @@ QString SelectionPage::PointToString(const QPoint& point)
 {
     return QString("(" + QString::number(point.x()) +", " + QString::number(point.y()) + ")");
 }
+
+QList<QPoint> SelectionPage::CheckForSelection(const QPoint& point)
+{
+    QList<QPoint> selectionRange;
+    QList<QPoint> returnVal;
+    int x = point.x();
+    int y = point.y();
+
+    selectionRange.append(QPoint(point));
+    //center width
+    selectionRange.append(QPoint(x-4, y));
+    selectionRange.append(QPoint(x-3, y));
+    selectionRange.append(QPoint(x-2, y));
+    selectionRange.append(QPoint(x-1, y));
+    selectionRange.append(QPoint(x+1, y));
+    selectionRange.append(QPoint(x+2, y));
+    selectionRange.append(QPoint(x+3, y));
+    selectionRange.append(QPoint(x+4, y));
+    //+1 in the y
+    selectionRange.append(QPoint(x-3, y+1));
+    selectionRange.append(QPoint(x-2, y+1));
+    selectionRange.append(QPoint(x-1, y+1));
+    selectionRange.append(QPoint(x+1, y+1));
+    selectionRange.append(QPoint(x+2, y+1));
+    selectionRange.append(QPoint(x+3, y+1));
+    //-1 in the y
+    selectionRange.append(QPoint(x-3, y-1));
+    selectionRange.append(QPoint(x-2, y-1));
+    selectionRange.append(QPoint(x-1, y-1));
+    selectionRange.append(QPoint(x+1, y-1));
+    selectionRange.append(QPoint(x+2, y-1));
+    selectionRange.append(QPoint(x+3, y-1));
+    //+2 in the y
+    selectionRange.append(QPoint(x-2, y+2));
+    selectionRange.append(QPoint(x-1, y+2));
+    selectionRange.append(QPoint(x+1, y+2));
+    selectionRange.append(QPoint(x+2, y+2));
+    //-2 in the y
+    selectionRange.append(QPoint(x-2, y-2));
+    selectionRange.append(QPoint(x-1, y-2));
+    selectionRange.append(QPoint(x+1, y-2));
+    selectionRange.append(QPoint(x+2, y-2));
+    //+3 in the y
+    selectionRange.append(QPoint(x-1, y+3));
+    selectionRange.append(QPoint(x+1, y+3));
+    //-3 in the y
+    selectionRange.append(QPoint(x-1, y-3));
+    selectionRange.append(QPoint(x+1, y-3));
+    //+4 in the y
+    selectionRange.append(QPoint(x, y+4));
+    //-4 in the y
+    selectionRange.append(QPoint(x, y-4));
+
+    foreach (QPoint p, selectionRange) {
+        if(selectionPaneImage.valid(p))
+        {
+            QColor pCol = selectionPaneImage.pixelColor(p);
+            if(CheckColorTolerance(&pCol))
+            {
+                returnVal.append(p);
+            }
+        }
+    }
+
+
+    return returnVal;
+}
+
+void SelectionPage::PushMapToStorage()
+{
+    pixelStorage.append(pixelMap);
+    pixelMap = QMap<QString, QPoint>();
+}
+
+void SelectionPage::UndoLastLine()
+{
+    if(!pixelStorage.isEmpty())
+    {
+        qDebug(qUtf8Printable(QString("This is from the beginning of the undo last line. Pixel map Size:") + QString::number(pixelMap.count())));
+        pixelMap = pixelStorage.last();
+        ColorImageBasedOnPixelMap(Qt::GlobalColor::black);
+        EditedImages.push(selectionPaneImage);
+        pixelStorage.pop_back();
+        qDebug(qUtf8Printable(QString("This is from the end of the undo last line. Pixel map Size:") + QString::number(pixelMap.count())));
+
+    }
+}
+
+
 
 
 

@@ -264,31 +264,24 @@ void Window_Primary::on_lblSelectionImage_clicked(QMouseEvent * event)
 
         if(!selectionPage->selectionPaneImage.isNull())
         {
+            //reset pixelmap for new line detection **TEMPORARY**
+
             QPoint point = QPoint(event->x(), event->y());
 
+            ///This method is currently being built to extend the selection size
+            QList<QPoint> points = selectionPage->CheckForSelection(point);
             //Testing creating a tolerance threshold for pixel analysiss
-            int red, green, blue;
-
-            QColor pixelColor = selectionPage->selectionPaneImage.pixelColor(event->x(), event->y());
-            pixelColor.QColor::getRgb(&red, &green, &blue);
-
-            bool returnVal = selectionPage->CheckColorTolerance(&pixelColor);
-
-            qDebug(qUtf8Printable(QString::number(returnVal)));
-
-            qDebug(qUtf8Printable(QString::number(true) + "= true"));
-
-            qDebug(qUtf8Printable("Red:" + QString::number(red) + " Green:" + QString::number(green) + " Blue:" + QString::number(blue)));
-            qDebug(qUtf8Printable(pixelColor.name()));
-
 
             ///Code that is being developed for the magic wand tool
-            selectionPage->AddSelectionLine(point);
-            selectionPage->ColorImageBasedOnPixelMap();
+            foreach (QPoint p, points) {
+                selectionPage->AddSelectionLine(p);
+            }
+            selectionPage->ColorImageBasedOnPixelMap(Qt::GlobalColor::green);
 
             selectionPage->EditedImages.push(selectionPage->selectionPaneImage);
 
             ui->lblSelectionImage->setPixmap(QPixmap::fromImage(selectionPage->selectionPaneImage));
+            selectionPage->PushMapToStorage();
             selectionPage->InProgress = false;
         }
 
@@ -298,4 +291,10 @@ void Window_Primary::on_lblSelectionImage_clicked(QMouseEvent * event)
         QMessageBox::warning(this, tr("Terrain Generator"), tr("There is already a process ocurring."));
     }
 
+}
+
+void Window_Primary::on_undoSelectionBtn_clicked()
+{
+    selectionPage->UndoLastLine();
+    ui->lblSelectionImage->setPixmap(QPixmap::fromImage(selectionPage->selectionPaneImage));
 }

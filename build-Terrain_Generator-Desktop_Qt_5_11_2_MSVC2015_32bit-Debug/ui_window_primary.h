@@ -85,6 +85,7 @@ public:
     MyStorageBox *groupBox_10;
     QHBoxLayout *horizontalLayout_3;
     QSpacerItem *horizontalSpacer_7;
+    QPushButton *undoSelectionBtn;
     QPushButton *btnAutoDetect;
     QSpacerItem *horizontalSpacer_8;
     QFrame *line_2;
@@ -418,6 +419,12 @@ public:
 
         horizontalLayout_3->addItem(horizontalSpacer_7);
 
+        undoSelectionBtn = new QPushButton(groupBox_10);
+        undoSelectionBtn->setObjectName(QStringLiteral("undoSelectionBtn"));
+        undoSelectionBtn->setFont(font1);
+
+        horizontalLayout_3->addWidget(undoSelectionBtn);
+
         btnAutoDetect = new QPushButton(groupBox_10);
         btnAutoDetect->setObjectName(QStringLiteral("btnAutoDetect"));
         QSizePolicy sizePolicy3(QSizePolicy::Minimum, QSizePolicy::Fixed);
@@ -477,7 +484,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 372, 284));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 424, 284));
         formLayout = new QFormLayout(scrollAreaWidgetContents);
         formLayout->setObjectName(QStringLiteral("formLayout"));
         label_4 = new QLabel(scrollAreaWidgetContents);
@@ -782,7 +789,7 @@ public:
         scrollArea_2->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName(QStringLiteral("scrollAreaWidgetContents_2"));
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 357, 277));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 298, 277));
         formLayout_2 = new QFormLayout(scrollAreaWidgetContents_2);
         formLayout_2->setObjectName(QStringLiteral("formLayout_2"));
         label_19 = new QLabel(scrollAreaWidgetContents_2);
@@ -1098,6 +1105,7 @@ public:
         label_3->setText(QApplication::translate("Window_Primary", "<html><head/><body><p align=\"center\"><span style=\" font-size:20pt; text-decoration: underline;\">Selection</span></p></body></html>", nullptr));
         label_6->setText(QApplication::translate("Window_Primary", "<html><head/><body><p><span style=\" font-size:12pt;\">-Click image to start detecting contour lines.</span></p><p><span style=\" font-size:12pt;\">-When a line is detected, it will become highlighted.</span></p><p><span style=\" font-size:12pt;\">-Select at least one line before attempting auto-detect.</span></p><p><br/></p><p><span style=\" font-size:12pt;\">-More can be added here as needed</span></p></body></html>", nullptr));
         groupBox_10->setTitle(QString());
+        undoSelectionBtn->setText(QApplication::translate("Window_Primary", "Undo Last Line", nullptr));
         btnAutoDetect->setText(QApplication::translate("Window_Primary", "Auto-Detect Lines", nullptr));
         groupBox_13->setTitle(QString());
         label_14->setText(QApplication::translate("Window_Primary", "<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; text-decoration: underline;\">Preferences</span></p></body></html>", nullptr));

@@ -577,6 +577,18 @@
                      </spacer>
                     </item>
                     <item>
+                     <widget class="QPushButton" name="undoSelectionBtn">
+                      <property name="font">
+                       <font>
+                        <pointsize>12</pointsize>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Undo Last Line</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
                      <widget class="QPushButton" name="btnAutoDetect">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
@@ -689,7 +701,7 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>372</width>
+                      <width>424</width>
                       <height>284</height>
                      </rect>
                     </property>
@@ -1334,7 +1346,7 @@
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>357</width>
+                      <width>298</width>
                       <height>277</height>
                      </rect>
                     </property>

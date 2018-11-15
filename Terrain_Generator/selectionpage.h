@@ -28,8 +28,11 @@ public:
     QStack<QImage> EditedImages;
 
     bool CheckColorTolerance(QColor* color);
+    QList<QPoint> CheckForSelection(const QPoint& point);
+    void PushMapToStorage();
+    void UndoLastLine();
 
-    void ColorImageBasedOnPixelMap();
+    void ColorImageBasedOnPixelMap(const QColor& color);
 
 
 signals:
@@ -40,6 +43,8 @@ public slots:
 private:
 
     QMap<QString, QPoint> pixelMap;
+
+    QList<QMap<QString, QPoint>> pixelStorage;
 
     struct LineSegment
     {
@@ -56,6 +61,7 @@ private:
     void AddLineToPixelMap(const LineSegment& line);
     static QString PointToString(const QPoint& point);
     QPoint CheckYAxisOfLine(const LineSegment& line, bool above);
+
 };
 
 #endif // SELECTIONPAGE_H

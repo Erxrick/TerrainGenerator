@@ -66,6 +66,8 @@ private slots:
 
 
 
+    void on_undoSelectionBtn_clicked();
+
 private:
     Ui::Window_Primary *ui;
 
